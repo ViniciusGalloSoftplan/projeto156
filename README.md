@@ -7,7 +7,7 @@ Projeto web desenvolvido com HTML, CSS e JavaScript.
 ```
 156/
 ├── index.html          # Página principal
-├── categoria.html     # Página de categorias
+├── categoria.html     # Página de sub-categorias
 ├── assets/
 │   ├── css/
 │   │   └── style.css  # Estilos globais
