@@ -157,15 +157,23 @@ header {
 }
 .carousel-track {
   display: flex;
-  transition: transform 0.4s ease-in-out;
-  gap: 0;
+  gap: 16px;
   align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
 }
 .carousel-slide {
   display: flex;
   gap: 16px;
   flex-shrink: 0;
-  width: 100%;
+  scroll-snap-align: start;
   align-items: center;
 }
 .featured-card {
@@ -255,44 +263,76 @@ header {
 }
 
 /* ── RESPONSIVE CAROUSEL ── */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .carousel-slide {
-    gap: 8px;
+    width: 85%;
+    justify-content: center;
+    gap: 12px;
   }
   .featured-card {
-    padding: 14px 10px;
-    min-width: calc(33.333% - 5px);
-  }
-  .carousel-nav {
-    width: 32px;
-    height: 32px;
-  }
-  .featured-card-icon {
-    width: 32px;
-    height: 32px;
-  }
-  .featured-card-name {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 480px) {
-  .featured-card {
-    min-width: calc(50% - 4px);
-    padding: 12px 8px;
+    padding: 14px 12px;
+    min-width: 100%;
   }
   .carousel-nav {
     display: none;
   }
   .carousel-viewport {
-    padding: 15px 0;
+    padding: 20px 0;
   }
   .featured-card-icon {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
   }
   .featured-card-name {
-    font-size: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .carousel-slide {
+    width: 696px;
+  }
+  .featured-card {
+    padding: 16px 12px;
+    width: 340px;
+    flex: none;
+  }
+  .carousel-nav {
+    width: 36px;
+    height: 36px;
+    display: flex;
+  }
+  .featured-card-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .featured-card-name {
+    font-size: 12px;
+  }
+  .carousel-track {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1025px) {
+  .carousel-viewport {
+    overflow: hidden;
+  }
+  .carousel-track {
+    overflow: visible;
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+  }
+  .carousel-slide {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .featured-card {
+    min-width: 0;
+    flex: 1;
+  }
+  .carousel-nav {
+    display: flex;
   }
 }
 

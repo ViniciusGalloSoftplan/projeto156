@@ -70,10 +70,18 @@ function renderFeaturedCarousel() {
     return;
   }
   
-  // Divide into groups of 3 for better mobile display
+  // Get cards per slide based on screen size
+  const getCardsPerSlide = () => {
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  };
+  
+  // Divide into groups based on screen size
   const groups = [];
-  for (let i = 0; i < featuredServices.length; i += 3) {
-    groups.push(featuredServices.slice(i, i + 3));
+  const cardsPerSlide = getCardsPerSlide();
+  for (let i = 0; i < featuredServices.length; i += cardsPerSlide) {
+    groups.push(featuredServices.slice(i, i + cardsPerSlide));
   }
   
   featuredSection.innerHTML = `
@@ -84,7 +92,7 @@ function renderFeaturedCarousel() {
       <button class="carousel-nav" id="carouselPrev" ${carouselIndex === 0 ? 'disabled' : ''}>
         <i data-lucide="chevron-left"></i>
       </button>
-      <div class="carousel-viewport">
+      <div class="carousel-viewport" id="carouselViewport">
         <div class="carousel-track" id="carouselTrack">
           ${groups.map((group, groupIndex) => `
             <div class="carousel-slide" data-group="${groupIndex}">
@@ -136,46 +144,122 @@ function renderFeaturedCarousel() {
 function setupCarouselNavigation(totalGroups) {
   const prevBtn = document.getElementById('carouselPrev');
   const nextBtn = document.getElementById('carouselNext');
+  const viewport = document.getElementById('carouselViewport');
   const track = document.getElementById('carouselTrack');
   const dots = document.querySelectorAll('.carousel-dot');
   
-  if (!prevBtn || !nextBtn || !track) return;
+  if (!prevBtn || !nextBtn || !viewport || !track) return;
   
-  const updateCarousel = () => {
-    const isMobile = window.innerWidth <= 768;
-    const slideWidth = isMobile ? 100 : 100;
-    track.style.transform = `translateX(-${carouselIndex * slideWidth}%)`;
+  const slides = track.querySelectorAll('.carousel-slide');
+  const isDesktop = window.innerWidth > 1024;
+  
+  const updateCarousel = (index) => {
+    carouselIndex = index;
+    
+    if (isDesktop) {
+      // Desktop: use transform-based sliding
+      track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+    } else {
+      // Mobile/Tablet: use scroll-snap
+      const slide = slides[carouselIndex];
+      if (slide) {
+        slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      }
+    }
     
     prevBtn.disabled = carouselIndex === 0;
     nextBtn.disabled = carouselIndex >= totalGroups - 1;
     
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === carouselIndex);
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle('active', dotIndex === carouselIndex);
     });
   };
   
   prevBtn.addEventListener('click', () => {
     if (carouselIndex > 0) {
-      carouselIndex--;
-      updateCarousel();
+      updateCarousel(carouselIndex - 1);
     }
   });
   
   nextBtn.addEventListener('click', () => {
     if (carouselIndex < totalGroups - 1) {
-      carouselIndex++;
-      updateCarousel();
+      updateCarousel(carouselIndex + 1);
     }
   });
   
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      carouselIndex = parseInt(dot.dataset.index);
-      updateCarousel();
+      const index = parseInt(dot.dataset.index);
+      updateCarousel(index);
     });
   });
   
-  window.addEventListener('resize', updateCarousel);
+  // Touch swipe detection for dot updates (mobile/tablet only)
+  if (!isDesktop) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+    
+    const handleSwipe = () => {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0 && carouselIndex < totalGroups - 1) {
+          // Swipe left - next
+          updateCarousel(carouselIndex + 1);
+        } else if (diff < 0 && carouselIndex > 0) {
+          // Swipe right - previous
+          updateCarousel(carouselIndex - 1);
+        }
+      }
+    };
+    
+    // Update dots on scroll (for scroll-snap)
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const trackCenter = track.scrollLeft + track.offsetWidth / 2;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        
+        slides.forEach((slide, index) => {
+          const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          const distance = Math.abs(trackCenter - slideCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+        
+        if (closestIndex !== carouselIndex) {
+          carouselIndex = closestIndex;
+          dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle('active', dotIndex === carouselIndex);
+          });
+          prevBtn.disabled = carouselIndex === 0;
+          nextBtn.disabled = carouselIndex >= totalGroups - 1;
+        }
+      }, 100);
+    }, { passive: true });
+  }
+  
+  // Handle resize - re-render carousel with new grouping
+  window.addEventListener('resize', () => {
+    const featuredSection = document.getElementById('featuredSection');
+    if (featuredSection) {
+      renderFeaturedCarousel();
+    }
+  });
 }
 
 // ══════════════════════════════════════════════
