@@ -42,22 +42,22 @@ function getFeaturedServices() {
   return featured;
 }
 
-// Map featured services to Lucide icons
+// Map featured services to Iconify icons
 const featuredIconMap = {
-  "Emissão de Boleto": "receipt",
-  "Segunda Via de Conta": "file-text",
-  "Nota Fiscal Eletrônica": "file-check",
-  "Agendamento de Saúde": "calendar",
-  "Alvará de Funcionamento": "clipboard-check",
-  "Alvará de Obras": "hammer",
-  "Ouvidoria": "message-square",
-  "Coleta Seletiva e Reciclagem": "recycle",
-  "Cata Cacareco": "truck",
-  "Habite-se": "clipboard-check"
+  "Emissão de Boleto": "ph:receipt",
+  "Segunda Via de Conta": "ph:file-text",
+  "Nota Fiscal Eletrônica": "ph:file-check",
+  "Agendamento de Saúde": "ph:calendar",
+  "Alvará de Funcionamento": "ph:clipboard-text",
+  "Alvará de Obras": "ph:hammer",
+  "Ouvidoria": "ph:megaphone",
+  "Coleta Seletiva e Reciclagem": "ph:recycle",
+  "Cata Cacareco": "ph:truck",
+  "Habite-se": "ph:clipboard-text"
 };
 
-function getLucideIcon(serviceName) {
-  return featuredIconMap[serviceName] || "circle";
+function getIconifyIcon(serviceName) {
+  return featuredIconMap[serviceName] || "ph:circle";
 }
 
 function renderFeaturedCarousel() {
@@ -90,7 +90,7 @@ function renderFeaturedCarousel() {
     </div>
     <div class="carousel-container">
       <button class="carousel-nav" id="carouselPrev" ${carouselIndex === 0 ? 'disabled' : ''}>
-        <i data-lucide="chevron-left"></i>
+        <iconify-icon icon="ph:caret-left"></iconify-icon>
       </button>
       <div class="carousel-viewport" id="carouselViewport">
         <div class="carousel-track" id="carouselTrack">
@@ -99,7 +99,7 @@ function renderFeaturedCarousel() {
               ${group.map(service => `
                 <div class="featured-card" data-service-name="${service.name}" data-category-id="${service.categoryId}">
                   <div class="featured-card-icon">
-                    <i data-lucide="${getLucideIcon(service.name)}"></i>
+                    <iconify-icon icon="${getIconifyIcon(service.name)}"></iconify-icon>
                   </div>
                   <div class="featured-card-name">${service.name}</div>
                 </div>
@@ -109,7 +109,7 @@ function renderFeaturedCarousel() {
         </div>
       </div>
       <button class="carousel-nav" id="carouselNext" ${carouselIndex >= groups.length - 1 ? 'disabled' : ''}>
-        <i data-lucide="chevron-right"></i>
+        <iconify-icon icon="ph:caret-right"></iconify-icon>
       </button>
     </div>
     <div class="carousel-dots" id="carouselDots">
@@ -118,9 +118,6 @@ function renderFeaturedCarousel() {
       `).join('')}
     </div>
   `;
-  
-  // Initialize Lucide icons
-  lucide.createIcons();
   
   // Setup carousel navigation
   setupCarouselNavigation(groups.length);
@@ -290,7 +287,7 @@ function renderCategoryMenu(main) {
   main.innerHTML = `
     <div class="section-header">
       <div class="section-icon-big" style="background:var(--tag-bg); color:var(--accent)">
-        <i data-lucide="building-2"></i>
+        <iconify-icon icon="ph:buildings"></iconify-icon>
       </div>
       <div>
         <div class="section-title">Categorias de Serviços</div>
@@ -298,7 +295,7 @@ function renderCategoryMenu(main) {
       </div>
     </div>
     <div class="search-wrap">
-      <span class="search-icon"><i data-lucide="search"></i></span>
+      <span class="search-icon"><iconify-icon icon="ph:magnifying-glass"></iconify-icon></span>
       <input type="text" id="searchInput" placeholder="Buscar serviços, assuntos ou categorias…" value="${searchQuery}" autocomplete="off">
       <span class="search-count" id="searchCount"></span>
       <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
@@ -309,9 +306,6 @@ function renderCategoryMenu(main) {
 
   setupSearchInput();
   renderFeaturedCarousel();
-
-  // Initialize Lucide icons for section header
-  lucide.createIcons();
 
   const grid = document.getElementById('categoryGrid');
   categories.forEach(cat => {
@@ -336,7 +330,7 @@ function renderCategoryMenu(main) {
     card.innerHTML = `
       <div class="category-card-header">
         <div class="category-icon" style="background:${cat.colorLight}; color:${cat.color}">
-          <i data-lucide="${cat.icon}"></i>
+          <iconify-icon icon="${cat.icon}"></iconify-icon>
         </div>
         <div class="category-name">${cat.name}</div>
       </div>
@@ -351,9 +345,6 @@ function renderCategoryMenu(main) {
     });
     grid.appendChild(card);
   });
-
-  // Initialize Lucide icons after rendering
-  lucide.createIcons();
 }
 
 // ══════════════════════════════════════════════
@@ -416,7 +407,7 @@ function setupSearchInput() {
       autocompleteDropdown.innerHTML = results.slice(0, 10).map(result => `
         <div class="autocomplete-item" data-category-id="${result.categoryId}">
           <div class="autocomplete-item-icon">
-            <i data-lucide="${result.icon}"></i>
+            <iconify-icon icon="${result.icon}"></iconify-icon>
           </div>
           <div class="autocomplete-item-content">
             <div class="autocomplete-item-name">${result.name}</div>
@@ -425,9 +416,6 @@ function setupSearchInput() {
         </div>
       `).join('');
       autocompleteDropdown.style.display = 'block';
-
-      // Initialize Lucide icons for autocomplete
-      lucide.createIcons({ root: autocompleteDropdown });
 
       autocompleteDropdown.querySelectorAll('.autocomplete-item').forEach(item => {
         item.addEventListener('click', () => {

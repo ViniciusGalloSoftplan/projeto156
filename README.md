@@ -7,16 +7,14 @@ Projeto web desenvolvido com HTML, CSS e JavaScript.
 ```
 156/
 ├── index.html          # Página principal
-├── categoria.html     # Página de sub-categorias
+├── categoria.html     # Página de categorias
 ├── assets/
 │   ├── css/
 │   │   └── style.css  # Estilos globais
 │   └── js/
-│       ├── main.js    # Script principal
+│       ├── data.js    # Dados do projeto (categorias e serviços)
 │       ├── index.js   # Script da página inicial
-│       ├── data.js    # Dados do projeto
-│       ├── categoria.js # Script de categorias
-│       └── setore.js  # Script de setores
+│       └── categoria.js # Script de categorias
 └── README.md          # Este arquivo
 ```
 

@@ -47,7 +47,7 @@ function renderCategory(main) {
   main.innerHTML = `
     <div class="section-header">
       <div class="section-icon-big">
-        <i data-lucide="${cat.icon}"></i>
+        <iconify-icon icon="${cat.icon}"></iconify-icon>
       </div>
       <div>
         <div class="section-title">${cat.name}</div>
@@ -66,6 +66,12 @@ function renderCategory(main) {
 
   // Check if category has subcategories
   if (cat.subcategories && cat.subcategories.length > 0) {
+    // Add class based on number of subcategories for better desktop layout
+    if (cat.subcategories.length === 1) {
+      grid.classList.add('cards-grid-1');
+    } else if (cat.subcategories.length === 2) {
+      grid.classList.add('cards-grid-2');
+    }
     // Render subcategories
     cat.subcategories.forEach(sub => {
       const subCard = document.createElement('div');
@@ -77,14 +83,14 @@ function renderCategory(main) {
         <div class="subcategory-badge">${sub.services.length} Serviços</div>
         <div class="subcategory-header">
           <div class="subcategory-icon">
-            <i data-lucide="${sub.icon}"></i>
+            <iconify-icon icon="${sub.icon}"></iconify-icon>
           </div>
           <div class="subcategory-info">
             <div class="subcategory-name">${sub.name}</div>
             <div class="subcategory-desc">${sub.desc}</div>
           </div>
           <div class="subcategory-toggle" style="transform: ${isExpanded ? 'rotate(90deg)' : 'rotate(0deg)'}">
-            <i data-lucide="chevron-right"></i>
+            <iconify-icon icon="ph:caret-right"></iconify-icon>
           </div>
         </div>
         <div class="subcategory-services ${isExpanded ? 'expanded' : ''}">
@@ -100,21 +106,26 @@ function renderCategory(main) {
         const toggleIcon = subCard.querySelector('.subcategory-toggle');
 
         if (servicesContainer.classList.contains('expanded')) {
-          servicesContainer.classList.remove('expanded');
+          servicesContainer.style.maxHeight = servicesContainer.scrollHeight + 'px';
+          setTimeout(() => {
+            servicesContainer.classList.remove('expanded');
+            servicesContainer.style.maxHeight = '0';
+          }, 10);
           toggleIcon.style.transform = 'rotate(0deg)';
           expandedSubcategories.delete(sub.id);
         } else {
           servicesContainer.classList.add('expanded');
+          servicesContainer.style.maxHeight = servicesContainer.scrollHeight + 'px';
           toggleIcon.style.transform = 'rotate(90deg)';
           expandedSubcategories.add(sub.id);
         }
 
         // Update guidance text visibility
         updateGuidanceText();
-      });
 
-      // Initialize Lucide icons for this subcategory
-      lucide.createIcons({ root: subCard });
+        // Equalize card heights
+        equalizeCardHeights();
+      });
 
       const servicesList = subCard.querySelector('.services-list');
       sub.services.forEach(svc => {
@@ -122,7 +133,7 @@ function renderCategory(main) {
         svcCard.className = 'service-item';
         svcCard.innerHTML = `
           <div class="service-icon">
-            <i data-lucide="${svc.icon}"></i>
+            <iconify-icon icon="${svc.icon}"></iconify-icon>
           </div>
           <div class="service-info">
             <div class="service-name">${svc.name}</div>
@@ -147,7 +158,7 @@ function renderCategory(main) {
       svcCard.className = 'card';
       svcCard.innerHTML = `
         <div class="card-icon" style="background: var(--tag-bg); color: var(--accent);">
-          <i data-lucide="${svc.icon}"></i>
+          <iconify-icon icon="${svc.icon}"></iconify-icon>
         </div>
         <div class="card-name">${svc.name}</div>
         <div class="card-desc">${svc.desc}</div>
@@ -223,8 +234,6 @@ function render() {
   const main = document.getElementById('main');
   if (main) {
     renderCategory(main);
-    // Initialize Lucide icons after rendering
-    lucide.createIcons();
   }
 }
 
