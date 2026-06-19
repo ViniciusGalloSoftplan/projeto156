@@ -9,21 +9,33 @@ let carouselIndex = 0;
 // ══════════════════════════════════════════════
 function getFeaturedServices() {
   const featured = [];
+  
+  function processSubcategory(sub, cat, parentName = '') {
+    if (sub.services && sub.services.length > 0) {
+      sub.services.forEach(svc => {
+        if (svc.featured) {
+          featured.push({
+            ...svc,
+            categoryName: cat.name,
+            categoryId: cat.id,
+            subcategoryName: parentName ? `${parentName} → ${sub.name}` : sub.name,
+            color: cat.color,
+            colorLight: cat.colorLight
+          });
+        }
+      });
+    }
+    if (sub.subcategories && sub.subcategories.length > 0) {
+      sub.subcategories.forEach(nestedSub => {
+        processSubcategory(nestedSub, cat, parentName ? `${parentName} → ${sub.name}` : sub.name);
+      });
+    }
+  }
+  
   categories.forEach(cat => {
     if (cat.subcategories && cat.subcategories.length > 0) {
       cat.subcategories.forEach(sub => {
-        sub.services.forEach(svc => {
-          if (svc.featured) {
-            featured.push({
-              ...svc,
-              categoryName: cat.name,
-              categoryId: cat.id,
-              subcategoryName: sub.name,
-              color: cat.color,
-              colorLight: cat.colorLight
-            });
-          }
-        });
+        processSubcategory(sub, cat);
       });
     } else if (cat.services && cat.services.length > 0) {
       cat.services.forEach(svc => {
@@ -267,9 +279,11 @@ function getServiceExamples(cat, maxCount = 3) {
   
   if (cat.subcategories && cat.subcategories.length > 0) {
     cat.subcategories.forEach(sub => {
-      sub.services.forEach(svc => {
-        allServices.push(svc.name);
-      });
+      if (sub.services && sub.services.length > 0) {
+        sub.services.forEach(svc => {
+          allServices.push(svc.name);
+        });
+      }
     });
   } else if (cat.services && cat.services.length > 0) {
     cat.services.forEach(svc => {
@@ -317,7 +331,9 @@ function renderCategoryMenu(main) {
     let serviceCount = 0;
     if (cat.subcategories && cat.subcategories.length > 0) {
       cat.subcategories.forEach(sub => {
-        serviceCount += sub.services.length;
+        if (sub.services && sub.services.length > 0) {
+          serviceCount += sub.services.length;
+        }
       });
     } else if (cat.services && cat.services.length > 0) {
       serviceCount = cat.services.length;
@@ -332,13 +348,15 @@ function renderCategoryMenu(main) {
         <div class="category-icon" style="background:${cat.colorLight}; color:${cat.color}">
           <iconify-icon icon="${cat.icon}"></iconify-icon>
         </div>
-        <div class="category-name">${cat.name}</div>
+        <div class="category-info">
+          <div class="category-name">${cat.name}</div>
+          <div class="category-desc">${cat.desc}</div>
+        </div>
       </div>
-      <div class="category-services">
-        <span class="service-examples">${examplesText}</span>
-        <span class="service-count">(${serviceCount} serviço${serviceCount !== 1 ? 's' : ''})</span>
+      <div class="category-tag">${serviceCount} serviço${serviceCount !== 1 ? 's' : ''}</div>
+      <div class="card-arrow">
+        <iconify-icon icon="maki:arrow"></iconify-icon>
       </div>
-      <span class="category-arrow">→</span>
     `;
     card.addEventListener('click', () => {
       window.location.href = `categoria.html#${cat.id}`;
@@ -364,7 +382,6 @@ function setupSearchInput() {
     if (query.length === 0) {
       autocompleteDropdown.style.display = 'none';
       searchCount.textContent = '';
-      renderCategoryMenu(document.getElementById('main'));
       return;
     }
 
@@ -373,24 +390,30 @@ function setupSearchInput() {
     categories.forEach(cat => {
       if (cat.subcategories && cat.subcategories.length > 0) {
         cat.subcategories.forEach(sub => {
-          sub.services.forEach(svc => {
-            if (svc.name.toLowerCase().includes(query) || 
-                svc.desc.toLowerCase().includes(query) ||
-                svc.tag?.toLowerCase().includes(query)) {
-              results.push({
-                ...svc,
-                categoryName: cat.name,
-                categoryId: cat.id,
-                subcategoryName: sub.name
-              });
-            }
-          });
+          if (sub.services && sub.services.length > 0) {
+            sub.services.forEach(svc => {
+              const matchesKeywords = svc.keywords && svc.keywords.some(kw => kw.toLowerCase().includes(query));
+              if (svc.name.toLowerCase().includes(query) || 
+                  svc.desc.toLowerCase().includes(query) ||
+                  svc.tag?.toLowerCase().includes(query) ||
+                  matchesKeywords) {
+                results.push({
+                  ...svc,
+                  categoryName: cat.name,
+                  categoryId: cat.id,
+                  subcategoryName: sub.name
+                });
+              }
+            });
+          }
         });
       } else if (cat.services && cat.services.length > 0) {
         cat.services.forEach(svc => {
+          const matchesKeywords = svc.keywords && svc.keywords.some(kw => kw.toLowerCase().includes(query));
           if (svc.name.toLowerCase().includes(query) || 
               svc.desc.toLowerCase().includes(query) ||
-              svc.tag?.toLowerCase().includes(query)) {
+              svc.tag?.toLowerCase().includes(query) ||
+              matchesKeywords) {
             results.push({
               ...svc,
               categoryName: cat.name,

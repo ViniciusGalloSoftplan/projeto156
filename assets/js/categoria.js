@@ -2,7 +2,6 @@
 //  STATE
 // ══════════════════════════════════════════════
 let activeId = null;
-let expandedSubcategories = new Set();
 
 // ══════════════════════════════════════════════
 //  BREADCRUMB
@@ -56,31 +55,24 @@ function renderCategory(main) {
       </div>
     </div>
     <div class="cards-grid" id="cardsGrid"></div>
-    <div class="guidance-text" id="guidanceText">Selecione uma subcategoria acima para ver os serviços disponíveis.</div>
   `;
 
   const grid = document.getElementById('cardsGrid');
 
-  // Initialize guidance text visibility
-  updateGuidanceText();
-
   // Check if category has subcategories
   if (cat.subcategories && cat.subcategories.length > 0) {
-    // Add class based on number of subcategories for better desktop layout
-    if (cat.subcategories.length === 1) {
-      grid.classList.add('cards-grid-1');
-    } else if (cat.subcategories.length === 2) {
-      grid.classList.add('cards-grid-2');
-    }
-    // Render subcategories
+    // Render subcategories as clickable cards (no accordion)
     cat.subcategories.forEach(sub => {
       const subCard = document.createElement('div');
       subCard.className = 'subcategory-card';
       subCard.style.setProperty('--category-bg', cat.colorLight);
       subCard.style.setProperty('--category-color', cat.color);
-      const isExpanded = expandedSubcategories.has(sub.id);
+      subCard.style.cursor = 'pointer';
+      
+      const serviceCount = sub.services ? sub.services.length : 0;
+      
       subCard.innerHTML = `
-        <div class="subcategory-badge">${sub.services.length} Serviços</div>
+        <div class="subcategory-badge">${serviceCount} Serviço${serviceCount !== 1 ? 's' : ''}</div>
         <div class="subcategory-header">
           <div class="subcategory-icon">
             <iconify-icon icon="${sub.icon}"></iconify-icon>
@@ -89,64 +81,14 @@ function renderCategory(main) {
             <div class="subcategory-name">${sub.name}</div>
             <div class="subcategory-desc">${sub.desc}</div>
           </div>
-          <div class="subcategory-toggle" style="transform: ${isExpanded ? 'rotate(90deg)' : 'rotate(0deg)'}">
-            <iconify-icon icon="ph:caret-right"></iconify-icon>
+          <div class="subcategory-toggle" style="transform: rotate(0deg)">
+            <iconify-icon icon="maki:arrow"></iconify-icon>
           </div>
-        </div>
-        <div class="subcategory-services ${isExpanded ? 'expanded' : ''}">
-          <div class="services-list"></div>
         </div>
       `;
 
-      const header = subCard.querySelector('.subcategory-header');
-      header.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const servicesContainer = subCard.querySelector('.subcategory-services');
-        const toggleIcon = subCard.querySelector('.subcategory-toggle');
-
-        if (servicesContainer.classList.contains('expanded')) {
-          servicesContainer.style.maxHeight = servicesContainer.scrollHeight + 'px';
-          setTimeout(() => {
-            servicesContainer.classList.remove('expanded');
-            servicesContainer.style.maxHeight = '0';
-          }, 10);
-          toggleIcon.style.transform = 'rotate(0deg)';
-          expandedSubcategories.delete(sub.id);
-        } else {
-          servicesContainer.classList.add('expanded');
-          servicesContainer.style.maxHeight = servicesContainer.scrollHeight + 'px';
-          toggleIcon.style.transform = 'rotate(90deg)';
-          expandedSubcategories.add(sub.id);
-        }
-
-        // Update guidance text visibility
-        updateGuidanceText();
-
-        // Equalize card heights
-        equalizeCardHeights();
-      });
-
-      const servicesList = subCard.querySelector('.services-list');
-      sub.services.forEach(svc => {
-        const svcCard = document.createElement('div');
-        svcCard.className = 'service-item';
-        svcCard.innerHTML = `
-          <div class="service-icon">
-            <iconify-icon icon="${svc.icon}"></iconify-icon>
-          </div>
-          <div class="service-info">
-            <div class="service-name">${svc.name}</div>
-            <div class="service-desc">${svc.desc}</div>
-          </div>
-          <div class="service-tag">${svc.tag}</div>
-        `;
-        svcCard.addEventListener('click', () => {
-          if (svc.link) {
-            window.open(svc.link, '_blank');
-          }
-        });
-        servicesList.appendChild(svcCard);
+      subCard.addEventListener('click', () => {
+        window.location.href = `subcategoria.html#${sub.id}`;
       });
 
       grid.appendChild(subCard);
@@ -157,12 +99,19 @@ function renderCategory(main) {
       const svcCard = document.createElement('div');
       svcCard.className = 'card';
       svcCard.innerHTML = `
-        <div class="card-icon" style="background: var(--tag-bg); color: var(--accent);">
-          <iconify-icon icon="${svc.icon}"></iconify-icon>
+        <div class="card-header">
+          <div class="card-icon" style="background: var(--tag-bg); color: var(--accent);">
+            <iconify-icon icon="${svc.icon}"></iconify-icon>
+          </div>
+          <div class="card-info">
+            <div class="card-name">${svc.name}</div>
+            <div class="card-desc">${svc.desc}</div>
+          </div>
         </div>
-        <div class="card-name">${svc.name}</div>
-        <div class="card-desc">${svc.desc}</div>
         <div class="card-tag">${svc.tag}</div>
+        <div class="card-arrow">
+          <iconify-icon icon="maki:arrow"></iconify-icon>
+        </div>
       `;
       svcCard.addEventListener('click', () => {
         if (svc.link) {
@@ -171,20 +120,6 @@ function renderCategory(main) {
       });
       grid.appendChild(svcCard);
     });
-  }
-}
-
-// ══════════════════════════════════════════════
-//  GUIDANCE TEXT
-// ══════════════════════════════════════════════
-function updateGuidanceText() {
-  const guidanceText = document.getElementById('guidanceText');
-  if (!guidanceText) return;
-
-  if (expandedSubcategories.size > 0) {
-    guidanceText.classList.add('hidden');
-  } else {
-    guidanceText.classList.remove('hidden');
   }
 }
 
