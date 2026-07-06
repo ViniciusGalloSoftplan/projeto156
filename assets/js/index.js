@@ -51,25 +51,15 @@ function getFeaturedServices() {
       });
     }
   });
+  
+  // Sort by order property if it exists, otherwise keep original order
+  featured.sort((a, b) => {
+    const orderA = a.order !== undefined ? a.order : 999;
+    const orderB = b.order !== undefined ? b.order : 999;
+    return orderA - orderB;
+  });
+  
   return featured;
-}
-
-// Map featured services to Iconify icons
-const featuredIconMap = {
-  "Emissão de Boleto": "ph:receipt",
-  "Segunda Via de Conta": "ph:file-text",
-  "Nota Fiscal Eletrônica": "ph:file-check",
-  "Agendamento de Saúde": "ph:calendar",
-  "Alvará de Funcionamento": "ph:clipboard-text",
-  "Alvará de Obras": "ph:hammer",
-  "Ouvidoria": "ph:megaphone",
-  "Coleta Seletiva e Reciclagem": "ph:recycle",
-  "Cata Cacareco": "ph:truck",
-  "Habite-se": "ph:clipboard-text"
-};
-
-function getIconifyIcon(serviceName) {
-  return featuredIconMap[serviceName] || "ph:circle";
 }
 
 function renderFeaturedCarousel() {
@@ -111,7 +101,7 @@ function renderFeaturedCarousel() {
               ${group.map(service => `
                 <div class="featured-card" data-service-name="${service.name}" data-category-id="${service.categoryId}">
                   <div class="featured-card-icon">
-                    <iconify-icon icon="${getIconifyIcon(service.name)}"></iconify-icon>
+                    <iconify-icon icon="${service.icon}"></iconify-icon>
                   </div>
                   <div class="featured-card-name">${service.name}</div>
                 </div>
@@ -144,7 +134,7 @@ function renderFeaturedCarousel() {
       if (service && service.link) {
         window.open(service.link, '_blank');
       } else if (categoryId) {
-        window.location.href = `categoria.html#${categoryId}`;
+        window.location.href = `categoria.html?id=${categoryId}`;
       }
     });
   });
@@ -359,7 +349,7 @@ function renderCategoryMenu(main) {
       </div>
     `;
     card.addEventListener('click', () => {
-      window.location.href = `categoria.html#${cat.id}`;
+      window.location.href = `categoria.html?id=${cat.id}`;
     });
     grid.appendChild(card);
   });
@@ -381,6 +371,7 @@ function setupSearchInput() {
     
     if (query.length === 0) {
       autocompleteDropdown.style.display = 'none';
+      autocompleteDropdown.innerHTML = '';
       searchCount.textContent = '';
       return;
     }
@@ -443,7 +434,7 @@ function setupSearchInput() {
       autocompleteDropdown.querySelectorAll('.autocomplete-item').forEach(item => {
         item.addEventListener('click', () => {
           const categoryId = item.dataset.categoryId;
-          window.location.href = `categoria.html#${categoryId}`;
+          window.location.href = `categoria.html?id=${categoryId}`;
         });
       });
     } else {
@@ -456,6 +447,7 @@ function setupSearchInput() {
   document.addEventListener('click', (e) => {
     if (!searchInput.contains(e.target) && !autocompleteDropdown.contains(e.target)) {
       autocompleteDropdown.style.display = 'none';
+      autocompleteDropdown.innerHTML = '';
     }
   });
 }
@@ -496,6 +488,12 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
       }
     });
+  }
+
+  // Setup modal close button
+  const modalCloseBtn = document.querySelector('.modal-close');
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
   }
 });
 

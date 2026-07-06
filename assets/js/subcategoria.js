@@ -57,10 +57,10 @@ function updateBreadcrumb() {
   backBtn.onclick = () => {
     if (parentSub) {
       // If nested, go back to parent subcategory
-      window.location.href = `subcategoria.html#${parentSub.id}`;
+      window.location.href = `subcategoria.html?id=${parentSub.id}`;
     } else {
       // If direct, go back to category
-      window.location.href = `categoria.html#${category.id}`;
+      window.location.href = `categoria.html?id=${category.id}`;
     }
   };
   
@@ -100,9 +100,9 @@ function updateBreadcrumb() {
   if (newBackBtn) {
     newBackBtn.onclick = () => {
       if (parentSub) {
-        window.location.href = `subcategoria.html#${parentSub.id}`;
+        window.location.href = `subcategoria.html?id=${parentSub.id}`;
       } else {
-        window.location.href = `categoria.html#${category.id}`;
+        window.location.href = `categoria.html?id=${category.id}`;
       }
     };
   }
@@ -116,13 +116,13 @@ function updateBreadcrumb() {
   
   document.querySelectorAll('.breadcrumb-item[data-level="category"]').forEach(item => {
     item.onclick = () => {
-      window.location.href = `categoria.html#${category.id}`;
+      window.location.href = `categoria.html?id=${category.id}`;
     };
   });
   
   document.querySelectorAll('.breadcrumb-item[data-level="parentSub"]').forEach(item => {
     item.onclick = () => {
-      window.location.href = `subcategoria.html#${parentSub.id}`;
+      window.location.href = `subcategoria.html?id=${parentSub.id}`;
     };
   });
 }
@@ -207,7 +207,7 @@ function renderSubcategory(main) {
       `;
       
       subCard.addEventListener('click', () => {
-        window.location.href = `subcategoria.html#${nestedSub.id}`;
+        window.location.href = `subcategoria.html?id=${nestedSub.id}`;
       });
       
       grid.appendChild(subCard);
@@ -283,14 +283,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Setup modal close button
+  const modalCloseBtn = document.querySelector('.modal-close');
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+  }
 });
 
 // ══════════════════════════════════════════════
 //  INIT
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  // Parse hash from URL (only subcategoryId)
-  const subcategoryId = window.location.hash.substring(1);
+  // Get subcategory ID from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const subcategoryId = urlParams.get('id');
   
   if (subcategoryId) {
     // Find subcategory across all categories
@@ -330,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   } else {
-    // No hash provided
+    // No ID provided
     const main = document.getElementById('main');
     if (main) {
       main.innerHTML = `

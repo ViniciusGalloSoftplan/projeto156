@@ -88,7 +88,7 @@ function renderCategory(main) {
       `;
 
       subCard.addEventListener('click', () => {
-        window.location.href = `subcategoria.html#${sub.id}`;
+        window.location.href = `subcategoria.html?id=${sub.id}`;
       });
 
       grid.appendChild(subCard);
@@ -160,6 +160,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Setup modal close button
+  const modalCloseBtn = document.querySelector('.modal-close');
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  // Setup breadcrumb back button
+  const backBtn = document.querySelector('.breadcrumb-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', goBack);
+  }
+
+  // Setup breadcrumb home item
+  const breadcrumbHome = document.querySelector('.breadcrumb-item[data-level="home"]');
+  if (breadcrumbHome) {
+    breadcrumbHome.addEventListener('click', goBack);
+  }
 });
 
 // ══════════════════════════════════════════════
@@ -176,10 +194,12 @@ function render() {
 //  INIT
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  // Get category ID from hash
-  activeId = window.location.hash.substring(1);
+  // Get category ID from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryId = urlParams.get('id');
   
-  if (activeId) {
+  if (categoryId) {
+    activeId = categoryId;
     const cat = categories.find(c => c.id === activeId);
     updateBreadcrumb(cat ? cat.name : null);
     render();

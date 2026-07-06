@@ -45,4 +45,3 @@ Vinicius Gallo - ViniciusGalloSoftplan
 
 ## Licença
 
-Este projeto está sob a licença MIT.
