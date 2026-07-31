@@ -419,7 +419,7 @@ function setupSearchInput() {
 
     if (results.length > 0) {
       autocompleteDropdown.innerHTML = results.slice(0, 10).map(result => `
-        <div class="autocomplete-item" data-category-id="${result.categoryId}">
+        <div class="autocomplete-item" data-category-id="${result.categoryId}" data-service-link="${result.link || ''}">
           <div class="autocomplete-item-icon">
             <iconify-icon icon="${result.icon}"></iconify-icon>
           </div>
@@ -434,7 +434,13 @@ function setupSearchInput() {
       autocompleteDropdown.querySelectorAll('.autocomplete-item').forEach(item => {
         item.addEventListener('click', () => {
           const categoryId = item.dataset.categoryId;
-          window.location.href = `categoria.html?id=${categoryId}`;
+          const serviceLink = item.dataset.serviceLink;
+
+          if (serviceLink) {
+            window.open(serviceLink, '_blank', 'noopener,noreferrer');
+          } else {
+            window.location.href = `categoria.html?id=${categoryId}`;
+          }
         });
       });
     } else {
