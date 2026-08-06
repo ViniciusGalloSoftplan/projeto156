@@ -249,11 +249,7 @@ header {
   max-width: 600px;
   margin: 0;
 }
-.badge-156 {
-  width: 180px;
-  height: auto;
-  display: block;
-}
+/* .badge-156 moved to line 838 to avoid duplication */
 
 .search-bar-top {
   padding: 0 28px;
@@ -1028,6 +1024,7 @@ main > .subcategory-section-header {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .card-desc {
@@ -1039,6 +1036,7 @@ main > .subcategory-section-header {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .card-tag {
@@ -1053,7 +1051,6 @@ main > .subcategory-section-header {
   color: var(--card-border); font-size: 16px; transition: color .2s, transform .2s;
 }
 .card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
-.category-card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
 
 /* ── SUBCATEGORY CARD ── */
 .subcategory-card {
@@ -1119,6 +1116,7 @@ main > .subcategory-section-header {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .subcategory-desc {
@@ -1130,6 +1128,7 @@ main > .subcategory-section-header {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .subcategory-toggle {
@@ -1763,6 +1762,7 @@ main > .subcategory-section-header {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
   .breadcrumb-item {
@@ -1834,6 +1834,7 @@ main > .subcategory-section-header {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
   .breadcrumb-item {
