@@ -164,7 +164,7 @@ function renderSubcategory(main) {
   const hasServices = subcategory.services && subcategory.services.length > 0;
 
   main.innerHTML = `
-    <div class="section-header">
+    <div class="section-header subcategory-section-header">
       <div class="section-icon-big">
         <iconify-icon icon="${subcategory.icon}"></iconify-icon>
       </div>

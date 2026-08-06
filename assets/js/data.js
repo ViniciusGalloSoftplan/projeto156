@@ -239,7 +239,7 @@ const categories = [
             icon: "solar:stethoscope-bold", 
             name: "Castração", 
             tag: "Controle Populacional", 
-            desc: "Solicitação ou reclamação sobre castração de cães e gatos.", 
+            desc: "Reclamação sobre castração de cães e gatos.", 
             keywords: [
               "castrar", 
               "esterilizar", 
@@ -1480,7 +1480,7 @@ const categories = [
               "terreno com mato"
             ], 
             featured: true,
-            link: "https://sempapel.piracicaba.sp.gov.br/atendimento/solicitar-servico/561/formulario/6a5f8b6ae4b0a15dd79e0ba3",
+            link: "https://sempapel.piracicaba.sp.gov.br/atendimento/solicitar-servico/701/formulario/6a70a6bce4b0a15dd79eb78d",
             order: 5
           }
         ]
@@ -4318,7 +4318,7 @@ const categories = [
     icon: "tabler:message-report",
     color: "#2563eb",
     colorLight: "#dbeafe",
-    name: "Ouvidoria",
+    name: "Sugestões e Reclamações",
     desc: "Canal para agradecimentos, sugestões, reclamações e acesso à informação.",
     subcategories: [
       {
@@ -4387,7 +4387,7 @@ const categories = [
               "abrir reclamação", 
               "reclamar serviço"
             ], 
-            featured: true,
+            featured: false,
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/solicitar-servico/698/formulario/6a611291e4b0a15dd79e24cc",
             order: 5
           },

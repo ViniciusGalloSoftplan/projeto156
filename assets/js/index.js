@@ -72,9 +72,12 @@ function renderFeaturedCarousel() {
     return;
   }
   
+  // Reset carousel index to ensure dots match correctly
+  carouselIndex = 0;
+  
   // Get cards per slide based on screen size
   const getCardsPerSlide = () => {
-    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth <= 640) return 1;
     if (window.innerWidth <= 1024) return 2;
     return 3;
   };
@@ -91,8 +94,8 @@ function renderFeaturedCarousel() {
       <div class="featured-title">Serviços mais acessados</div>
     </div>
     <div class="carousel-container">
-      <button class="carousel-nav" id="carouselPrev" ${carouselIndex === 0 ? 'disabled' : ''}>
-        <iconify-icon icon="ph:caret-left"></iconify-icon>
+      <button class="carousel-nav" id="carouselPrev" ${carouselIndex === 0 ? 'disabled' : ''} aria-label="Anterior">
+        <iconify-icon icon="ph:caret-left" aria-hidden="true"></iconify-icon>
       </button>
       <div class="carousel-viewport" id="carouselViewport">
         <div class="carousel-track" id="carouselTrack">
@@ -100,7 +103,7 @@ function renderFeaturedCarousel() {
             <div class="carousel-slide" data-group="${groupIndex}">
               ${group.map(service => `
                 <div class="featured-card" data-service-name="${service.name}" data-category-id="${service.categoryId}">
-                  <div class="featured-card-icon">
+                  <div class="featured-card-icon" aria-hidden="true">
                     <iconify-icon icon="${service.icon}"></iconify-icon>
                   </div>
                   <div class="featured-card-name">${service.name}</div>
@@ -110,8 +113,8 @@ function renderFeaturedCarousel() {
           `).join('')}
         </div>
       </div>
-      <button class="carousel-nav" id="carouselNext" ${carouselIndex >= groups.length - 1 ? 'disabled' : ''}>
-        <iconify-icon icon="ph:caret-right"></iconify-icon>
+      <button class="carousel-nav" id="carouselNext" ${carouselIndex >= groups.length - 1 ? 'disabled' : ''} aria-label="Próximo">
+        <iconify-icon icon="ph:caret-right" aria-hidden="true"></iconify-icon>
       </button>
     </div>
     <div class="carousel-dots" id="carouselDots">
@@ -288,25 +291,16 @@ function getServiceExamples(cat, maxCount = 3) {
 //  RENDER CATEGORY MENU (MENU PRINCIPAL)
 // ══════════════════════════════════════════════
 function renderCategoryMenu(main) {
-  main.innerHTML = `
-    <div class="section-header">
-      <div class="section-icon-big" style="background:var(--tag-bg); color:var(--accent)">
-        <iconify-icon icon="ph:buildings"></iconify-icon>
-      </div>
-      <div>
-        <div class="section-title">Categorias de Serviços</div>
-        <div class="section-desc">Explore todos os serviços da Prefeitura Municipal de Piracicaba por categoria.</div>
-      </div>
-    </div>
-    <div class="search-wrap">
-      <span class="search-icon"><iconify-icon icon="ph:magnifying-glass"></iconify-icon></span>
-      <input type="text" id="searchInput" placeholder="Buscar serviços, assuntos ou categorias…" value="${searchQuery}" autocomplete="off">
-      <span class="search-count" id="searchCount"></span>
-      <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
-    </div>
-    <div class="featured-section" id="featuredSection"></div>
-    <div class="category-grid" id="categoryGrid"></div>
-  `;
+  // Setup online option click handler
+  const onlineOption = main.querySelector('.online-option');
+  if (onlineOption) {
+    onlineOption.addEventListener('click', () => {
+      const categoryGrid = document.getElementById('categoryGrid');
+      if (categoryGrid) {
+        categoryGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
 
   setupSearchInput();
   renderFeaturedCarousel();
@@ -335,7 +329,7 @@ function renderCategoryMenu(main) {
     
     card.innerHTML = `
       <div class="category-card-header">
-        <div class="category-icon" style="background:${cat.colorLight}; color:${cat.color}">
+        <div class="category-icon" style="background:#dbeafe; color:#2563eb" aria-hidden="true">
           <iconify-icon icon="${cat.icon}"></iconify-icon>
         </div>
         <div class="category-info">
@@ -344,7 +338,7 @@ function renderCategoryMenu(main) {
         </div>
       </div>
       <div class="category-tag">${serviceCount} serviço${serviceCount !== 1 ? 's' : ''}</div>
-      <div class="card-arrow">
+      <div class="card-arrow" aria-hidden="true">
         <iconify-icon icon="maki:arrow"></iconify-icon>
       </div>
     `;
@@ -362,8 +356,75 @@ function setupSearchInput() {
   const searchInput = document.getElementById('searchInput');
   const autocompleteDropdown = document.getElementById('autocompleteDropdown');
   const searchCount = document.getElementById('searchCount');
+  const searchBarTop = document.querySelector('.search-bar-top');
+  const searchToggle = document.querySelector('.search-toggle');
+  const closeButton = document.querySelector('.search-close-btn');
   
   if (!searchInput) return;
+
+  const openSearchFullScreen = () => {
+    if (searchBarTop) {
+      searchBarTop.classList.add('expanded');
+      searchToggle?.setAttribute('aria-expanded', 'true');
+      searchInput.focus();
+    }
+  };
+
+  const closeSearchFullScreen = () => {
+    if (searchBarTop) {
+      searchBarTop.classList.remove('expanded');
+      searchToggle?.setAttribute('aria-expanded', 'false');
+      searchToggle?.focus();
+    }
+  };
+
+  const resetSearchState = () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchCount.textContent = '';
+    autocompleteDropdown.style.display = 'none';
+    autocompleteDropdown.innerHTML = '';
+  };
+
+  if (searchToggle) {
+    searchToggle.addEventListener('click', openSearchFullScreen);
+  }
+
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      resetSearchState();
+      closeSearchFullScreen();
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!searchBarTop?.classList.contains('expanded')) return;
+    if (searchBarTop.contains(e.target)) return;
+    if (!searchQuery) {
+      closeSearchFullScreen();
+    }
+  });
+
+  searchInput.addEventListener('focus', () => {
+    if (searchBarTop && !searchBarTop.classList.contains('expanded')) {
+      searchBarTop.classList.add('expanded');
+      searchToggle?.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  searchInput.addEventListener('blur', () => {
+    setTimeout(() => {
+      if (searchBarTop?.classList.contains('expanded') && !searchQuery && !searchBarTop.contains(document.activeElement)) {
+        closeSearchFullScreen();
+      }
+    }, 0);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchBarTop?.classList.contains('expanded') && !searchQuery) {
+      closeSearchFullScreen();
+    }
+  });
 
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();

@@ -11,25 +11,14 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div id="sic-bar" role="alert">
-  <div class="sic-bar-dot"></div>
-  <div class="sic-bar-text">
-    <strong>Acesso à Informação (SIC)</strong> — Solicite dados públicos ao município e acompanhe pelo protocolo 156.
-  </div>
-  <a class="sic-bar-btn" href="/156/sic.html" target="_blank">Acessar o SIC →</a>
-</div>
-
 <!-- HEADER -->
 <header>
   <div class="logo">
-    <img src="https://sempapel.pmp.sp.gov.br/Imagens/logoPmp.webp" alt="Logo Prefeitura de Piracicaba" class="logo-img">
+    <img src="assets/images/logoPiraciacaba.png" alt="Logo Prefeitura de Piracicaba" class="logo-img">
     <div>
-      <div class="logo-text">Portal de Serviços</div>
-      <div class="logo-sub">Prefeitura Municipal de Piracicaba</div>
+      <div class="logo-text">Portal de Serviços 156</div>
+      <div class="logo-sub">Prefeitura do Municipio de Piracicaba </div>
     </div>
-  </div>
-  <div class="header-actions">
-    <span class="badge">📞 156</span>
   </div>
 </header>
 
@@ -40,9 +29,62 @@
       <span class="breadcrumb-item active" data-level="home">Início</span>
     </div>
   </div>
+  <div class="search-bar-top">
+    <div class="search-wrap">
+      <button type="button" class="search-toggle" aria-label="Abrir busca" aria-expanded="false">
+        <iconify-icon icon="ph:magnifying-glass" aria-hidden="true"></iconify-icon>
+        <span>Buscar serviços...</span>
+      </button>
+      <span class="search-icon" aria-hidden="true"><iconify-icon icon="ph:magnifying-glass"></iconify-icon></span>
+      <input type="text" id="searchInput" placeholder="Buscar serviços, assuntos ou categorias…" aria-label="Buscar serviços, assuntos ou categorias" autocomplete="off">
+      <button type="button" class="search-close-btn" aria-label="Fechar busca">✕</button>
+      <span class="search-count" id="searchCount"></span>
+      <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
+    </div>
+  </div>
 
   <!-- MAIN -->
-  <main id="main"></main>
+  <main id="main">
+    <div class="hero-section">
+      <div class="hero-brand">
+        <img src="assets/images/logo156.png" alt="Logo 156" class="hero-brand-icon">
+      </div>
+      <div class="channel-card" role="group" aria-label="Canais de acesso ao 156">
+        <a class="channel-option" href="tel:156" aria-label="Ligar para o 156">
+          <div class="channel-icon phone" aria-hidden="true">
+            <iconify-icon icon="ph:phone-call"></iconify-icon>
+          </div>
+          <div class="channel-text">
+            <strong>Prefere ligar?</strong>
+            <span>Disque 156 e fale com um atendente</span>
+          </div>
+        </a>
+        <div class="channel-divider"></div>
+        <button class="channel-option online-option" type="button" aria-label="Ir para as categorias de serviços">
+          <div class="channel-icon online" aria-hidden="true">
+            <iconify-icon icon="ph:desktop"></iconify-icon>
+          </div>
+          <div class="channel-text">
+            <strong>Prefere online?</strong>
+            <span>Escolha uma categoria abaixo e abra seu pedido</span>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div class="featured-services-section">
+      <div class="featured-section" id="featuredSection"></div>
+    </div>
+    <div class="categories-section">
+      <div class="section-header">
+        <div class="section-header-content">
+          <div class="categories-header">
+            <h2>Categorias de Serviços</h2>
+          </div>
+        </div>
+      </div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </div>
+  </main>
 </div>
 
 <!-- MODAL -->
@@ -65,6 +107,5 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/index.js"></script>
-<script src="assets/js/sic-bar.js"></script>
 </body>
 </html>
