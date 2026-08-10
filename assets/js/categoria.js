@@ -3,6 +3,19 @@
 // ══════════════════════════════════════════════
 let activeId = null;
 
+// Torna um elemento clicável (div) acessível por teclado: focável via
+// Tab e ativável com Enter/Espaço, igual a um botão nativo.
+function makeKeyboardActivatable(el) {
+  el.setAttribute('tabindex', '0');
+  el.setAttribute('role', 'button');
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      el.click();
+    }
+  });
+}
+
 // ══════════════════════════════════════════════
 //  BREADCRUMB
 // ══════════════════════════════════════════════
@@ -87,6 +100,7 @@ function renderCategory(main) {
         </div>
       `;
 
+      makeKeyboardActivatable(subCard);
       subCard.addEventListener('click', () => {
         window.location.href = `subcategoria.html?id=${sub.id}`;
       });
@@ -113,6 +127,7 @@ function renderCategory(main) {
           <iconify-icon icon="maki:arrow"></iconify-icon>
         </div>
       `;
+      makeKeyboardActivatable(svcCard);
       svcCard.addEventListener('click', () => {
         if (svc.link) {
           window.open(svc.link, '_blank');
@@ -165,6 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.querySelector('.modal-close');
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  const protocolDropdown = document.querySelector('.protocol-dropdown');
+  const protocolToggle = document.querySelector('.protocol-dropdown-toggle');
+  if (protocolDropdown && protocolToggle) {
+    protocolToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = protocolDropdown.classList.toggle('open');
+      protocolToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!protocolDropdown.contains(e.target)) {
+        protocolDropdown.classList.remove('open');
+        protocolToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        protocolDropdown.classList.remove('open');
+        protocolToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   // Setup breadcrumb back button
