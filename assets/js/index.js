@@ -4,19 +4,6 @@
 let searchQuery = "";
 let carouselIndex = 0;
 
-// Torna um elemento clicável (div) acessível por teclado: focável via
-// Tab e ativável com Enter/Espaço, igual a um botão nativo.
-function makeKeyboardActivatable(el) {
-  el.setAttribute('tabindex', '0');
-  el.setAttribute('role', 'button');
-  el.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      el.click();
-    }
-  });
-}
-
 // ══════════════════════════════════════════════
 //  FEATURED SERVICES
 // ══════════════════════════════════════════════
@@ -537,51 +524,6 @@ function setupSearchInput() {
 }
 
 // ══════════════════════════════════════════════
-//  MODAL
-// ══════════════════════════════════════════════
-function openModal(title, url) {
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalIframe = document.getElementById('modalIframe');
-  
-  if (!modalOverlay || !modalTitle || !modalIframe) return;
-  
-  modalTitle.textContent = title;
-  modalIframe.src = url;
-  modalOverlay.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalIframe = document.getElementById('modalIframe');
-  
-  if (!modalOverlay || !modalIframe) return;
-  
-  modalOverlay.style.display = 'none';
-  modalIframe.src = '';
-  document.body.style.overflow = '';
-}
-
-// Close modal on overlay click
-document.addEventListener('DOMContentLoaded', () => {
-  const modalOverlay = document.getElementById('modalOverlay');
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) {
-        closeModal();
-      }
-    });
-  }
-
-  // Setup modal close button
-  const modalCloseBtn = document.querySelector('.modal-close');
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeModal);
-  }
-});
-
-// ══════════════════════════════════════════════
 //  INIT
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
@@ -590,25 +532,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCategoryMenu(main);
   }
 
-  const protocolDropdown = document.querySelector('.protocol-dropdown');
-  const protocolToggle = document.querySelector('.protocol-dropdown-toggle');
-  if (protocolDropdown && protocolToggle) {
-    protocolToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = protocolDropdown.classList.toggle('open');
-      protocolToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    document.addEventListener('click', (e) => {
-      if (!protocolDropdown.contains(e.target)) {
-        protocolDropdown.classList.remove('open');
-        protocolToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        protocolDropdown.classList.remove('open');
-        protocolToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
+  setupModalHandlers();
+  setupProtocolDropdown();
 });

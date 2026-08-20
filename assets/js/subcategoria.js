@@ -5,19 +5,6 @@ let category = null;
 let subcategory = null;
 let parentSub = null; // For nested subcategories
 
-// Torna um elemento clicável (div) acessível por teclado: focável via
-// Tab e ativável com Enter/Espaço, igual a um botão nativo.
-function makeKeyboardActivatable(el) {
-  el.setAttribute('tabindex', '0');
-  el.setAttribute('role', 'button');
-  el.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      el.click();
-    }
-  });
-}
-
 // ══════════════════════════════════════════════
 //  HELPER: Find subcategory across all categories
 // ══════════════════════════════════════════════
@@ -229,28 +216,7 @@ function renderSubcategory(main) {
   } else if (hasServices) {
     // Render services directly
     subcategory.services.forEach(svc => {
-      const svcCard = document.createElement('div');
-      svcCard.className = 'card';
-      svcCard.innerHTML = `
-        <div class="card-header">
-          <div class="card-icon" style="background: var(--tag-bg); color: var(--accent);">
-            <iconify-icon icon="${svc.icon}"></iconify-icon>
-          </div>
-          <div class="card-info">
-            <div class="card-name">${svc.name}</div>
-            <div class="card-desc">${svc.desc}</div>
-          </div>
-        </div>
-        <div class="card-tag">${svc.tag}</div>
-      `;
-      makeKeyboardActivatable(svcCard);
-      svcCard.addEventListener('click', () => {
-        const link = getServiceLink(svc);
-        if (link) {
-          window.open(link, '_blank');
-        }
-      });
-      grid.appendChild(svcCard);
+      grid.appendChild(createServiceCard(svc, { showArrow: false }));
     });
   } else {
     // No services or nested subcategories
@@ -263,70 +229,11 @@ function renderSubcategory(main) {
 }
 
 // ══════════════════════════════════════════════
-//  MODAL
+//  INIT (modal + dropdown de protocolo)
 // ══════════════════════════════════════════════
-function openModal(title, url) {
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalIframe = document.getElementById('modalIframe');
-  
-  if (!modalOverlay || !modalTitle || !modalIframe) return;
-  
-  modalTitle.textContent = title;
-  modalIframe.src = url;
-  modalOverlay.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalIframe = document.getElementById('modalIframe');
-  
-  if (!modalOverlay || !modalIframe) return;
-  
-  modalOverlay.style.display = 'none';
-  modalIframe.src = '';
-  document.body.style.overflow = '';
-}
-
-// Close modal on overlay click
 document.addEventListener('DOMContentLoaded', () => {
-  const modalOverlay = document.getElementById('modalOverlay');
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) {
-        closeModal();
-      }
-    });
-  }
-
-  // Setup modal close button
-  const modalCloseBtn = document.querySelector('.modal-close');
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeModal);
-  }
-
-  const protocolDropdown = document.querySelector('.protocol-dropdown');
-  const protocolToggle = document.querySelector('.protocol-dropdown-toggle');
-  if (protocolDropdown && protocolToggle) {
-    protocolToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = protocolDropdown.classList.toggle('open');
-      protocolToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    document.addEventListener('click', (e) => {
-      if (!protocolDropdown.contains(e.target)) {
-        protocolDropdown.classList.remove('open');
-        protocolToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        protocolDropdown.classList.remove('open');
-        protocolToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
+  setupModalHandlers();
+  setupProtocolDropdown();
 });
 
 // ══════════════════════════════════════════════

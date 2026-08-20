@@ -2,39 +2,30 @@ const APP_CONTEXT_STORAGE_KEY = "servico156_appContext";
 
 function detectAppContext() {
   try {
-    console.log("[getAppContext] window.location.href:", window.location.href);
 
     const params = new URLSearchParams(window.location.search);
     const ctxParam = (params.get("ctx") || "").toLowerCase();
-    console.log("[getAppContext] parâmetro ?ctx na URL:", ctxParam || "(nenhum)");
     if (ctxParam === "interno" || ctxParam === "externo") {
-      console.log("[getAppContext] resultado:", ctxParam, "(via parâmetro ?ctx na URL)");
       return ctxParam;
     }
 
     // Sem o parâmetro (ex: navegação interna já dentro do catálogo), tenta o
     // referrer como sinal secundário.
     const referrer = document.referrer || "";
-    console.log("[getAppContext] document.referrer:", referrer);
     if (referrer) {
       const refUrl = new URL(referrer);
       const refHost = refUrl.hostname.toLowerCase();
       const refPath = refUrl.pathname.toLowerCase();
-      console.log("[getAppContext] referrer host:", refHost, "| referrer path:", refPath);
       if (refPath.includes("/portal") || refHost.includes("piracicaba.sp.gov.br")) {
-        console.log("[getAppContext] resultado: interno (referrer indica o portal)");
         return "interno";
       }
     }
 
     const host = window.location.hostname.toLowerCase();
     if (host.endsWith("pmp.sp.gov.br")) {
-      console.log("[getAppContext] resultado: externo (sem sinal de portal, host é pmp.sp.gov.br)");
       return "externo";
     }
-    console.log("[getAppContext] nenhuma regra bateu, caindo no padrão externo");
   } catch (e) {
-    console.log("[getAppContext] erro ao detectar contexto:", e);
   }
   return "externo";
 }
@@ -43,7 +34,6 @@ function getAppContext() {
   try {
     const cached = sessionStorage.getItem(APP_CONTEXT_STORAGE_KEY);
     if (cached === "interno" || cached === "externo") {
-      console.log("[getAppContext] contexto já detectado nesta sessão:", cached);
       return cached;
     }
   } catch (e) {}
@@ -143,7 +133,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/492",
         linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2061&cdOrgao=2",
-        // order: 1
       },
       { 
         icon: "fa6-solid:truck-droplet",
@@ -161,7 +150,6 @@ const categories = [
         ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/493",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       },
       { 
         icon: "streamline-plump:food-truck-event-fair",   
@@ -179,7 +167,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/494",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       },
       { 
         icon: "ph:storefront",   
@@ -195,7 +182,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/495",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       },
       {
         icon: "mdi:bridge",       
@@ -211,7 +197,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/496",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       }
     ]
   },
@@ -246,7 +231,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/497",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -272,7 +256,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/498",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fluent-emoji-high-contrast:mosquito", 
@@ -290,7 +273,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/499",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fluent-emoji-high-contrast:rat", 
@@ -308,7 +290,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/500",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -350,7 +331,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/502",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-            // order: 1
           },
           { 
             icon: "solar:stethoscope-bold", 
@@ -367,7 +347,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/503",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-            // order: 1
           },
           { 
             icon: "material-symbols:skull-outline", 
@@ -385,7 +364,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/504",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:shield-alert-outline", 
@@ -419,7 +397,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/506",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -444,7 +421,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/507",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:snail", 
@@ -461,7 +437,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/508",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "healthicons:animal-tick-outline", 
@@ -478,7 +453,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/509",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "game-icons:scorpion", 
@@ -495,7 +469,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/510",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:bat", 
@@ -512,7 +485,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/511",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "icon-park-outline:pigeon", 
@@ -529,7 +501,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/512",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "boxicons:archive-arrow-down", 
@@ -546,7 +517,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/511",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -584,7 +554,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/514",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:list-checks", 
@@ -602,7 +571,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/515",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:house", 
@@ -620,7 +588,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/516",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "cil:basket", 
@@ -638,7 +605,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/517",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -664,7 +630,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/518",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:shield-alert-outline", 
@@ -682,7 +647,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/519",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -708,7 +672,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/520",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -734,7 +697,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/528",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -760,7 +722,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/529",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -786,7 +747,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/530",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       }
@@ -818,7 +778,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/531",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       },
       { 
         icon: "tabler:rainbow", 
@@ -836,7 +795,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/532",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       },
       { 
         icon: "mdi:hands-pray", 
@@ -854,7 +812,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/534",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       },
       { 
         icon: "tabler:dots", 
@@ -872,7 +829,6 @@ const categories = [
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/535",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
       }
     ]
   },
@@ -907,7 +863,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/536",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:file-certificate", 
@@ -924,7 +879,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/538",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -950,7 +904,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/539",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:first-aid-kit",
@@ -968,7 +921,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/542",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:user-x",
@@ -986,7 +938,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/540",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:apple",
@@ -1004,7 +955,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/544",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:users-group",
@@ -1022,7 +972,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/565",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:student",
@@ -1089,7 +1038,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/574",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:clock",
@@ -1107,7 +1055,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/575",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:bus-off",
@@ -1182,7 +1129,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/602",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:coin-off",
@@ -1199,7 +1145,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/604",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:stadium",
@@ -1252,7 +1197,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/579",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:ball-basketball",
@@ -1269,7 +1213,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/580",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:skateboard",
@@ -1285,7 +1228,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/581",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
         ]
       },
@@ -1310,7 +1252,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/583",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:heart-rate-monitor",
@@ -1458,7 +1399,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/533",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -1509,7 +1449,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/537",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "boxicons:store-alt",
@@ -1528,7 +1467,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/541",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:identification-card",
@@ -1572,7 +1510,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/545",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:trash",
@@ -1591,7 +1528,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/543",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:crane",
@@ -1609,7 +1545,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/546",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fa7-solid:map-location-dot",
@@ -1654,7 +1589,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/637",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fluent-emoji-high-contrast:mosquito",
@@ -1673,7 +1607,6 @@ const categories = [
               ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/639",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:clipboard-check-outline",
@@ -1692,7 +1625,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/640",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "la:smoking-ban",
@@ -1711,7 +1643,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/548",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "solar:wind-linear",
@@ -1730,7 +1661,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/641",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "si:briefcase-medical-line",
@@ -1772,7 +1702,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/549",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:smoke",
@@ -1790,7 +1719,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/550",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:biohazard",
@@ -1808,7 +1736,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/551",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:wind",
@@ -1826,7 +1753,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/552",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "iconoir:industry",
@@ -1844,7 +1770,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/553",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:lightning",
@@ -1888,7 +1813,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/555",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "material-symbols:delete-sweep-outline",
@@ -1906,7 +1830,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/556",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-            // order: 1
           },
           { 
             icon: "hugeicons:car-alert",
@@ -1951,7 +1874,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/558",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "proicons:container",
@@ -1969,7 +1891,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/559",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "carbon:tree-fall-risk",
@@ -1988,7 +1909,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/560",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:axe",
@@ -2033,7 +1953,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/562",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fluent-emoji-high-contrast:kite",
@@ -2112,7 +2031,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/608",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "temaki:crossing-markings-zebra-bicolour",
@@ -2131,7 +2049,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/610",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:line-dashed",
@@ -2150,7 +2067,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/611",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ic:baseline-abc",
@@ -2167,7 +2083,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/612",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:icons",
@@ -2184,7 +2099,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/617",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "bi:arrows-move",
@@ -2201,7 +2115,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/619",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -2314,7 +2227,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/656",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:gauge",
@@ -2333,7 +2245,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/662",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:sine-wave",
@@ -2355,7 +2266,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/663",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
         ]
       },
@@ -2381,7 +2291,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/665",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "material-symbols:lock",
@@ -2399,7 +2308,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/667",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -2451,7 +2359,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/671",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:eye",
@@ -2509,7 +2416,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/591",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:bus-wrench",
@@ -2528,7 +2434,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/592",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:bus-clock",
@@ -2547,7 +2452,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/593",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:account-cog-outline",
@@ -2591,7 +2495,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/598",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:ticket-confirmation-outline",
@@ -2609,7 +2512,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/601",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -2636,7 +2538,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/603",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:square-plus",
@@ -2655,7 +2556,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/606",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:arrows-left-right",
@@ -2673,7 +2573,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/607",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:square-x",
@@ -2692,7 +2591,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/609",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fa6-solid:people-roof",
@@ -2734,7 +2632,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/616",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:arrow-up-right",
@@ -2824,7 +2721,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/625",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:map-pin-plus",
@@ -2859,7 +2755,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/628",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:information-outline",
@@ -2877,7 +2772,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/633",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:sofa-outline", 
@@ -2996,7 +2890,6 @@ const categories = [
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/647",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "pepicons-pencil:tree-off",
@@ -3015,7 +2908,6 @@ const categories = [
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/648",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "game-icons:tree-beehive",
@@ -3034,7 +2926,6 @@ const categories = [
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/650",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "pinhead:tree-stump",
@@ -3053,7 +2944,6 @@ const categories = [
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/651",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "roentgen:dead-tree",
@@ -3071,7 +2961,6 @@ const categories = [
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/652",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:plant",
@@ -3125,7 +3014,6 @@ const categories = [
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/654",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "material-symbols-light:landslide-outline-rounded",
@@ -3144,7 +3032,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/655",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "bi:bricks",
@@ -3163,7 +3050,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/657",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "carbon:accessibility",
@@ -3212,7 +3098,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/659",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "pinhead:manhole-cover",
@@ -3229,7 +3114,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/660",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:border-sides",
@@ -3247,7 +3131,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/661",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fluent:stream-output-20-regular",
@@ -3265,7 +3148,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/664",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:waves",
@@ -3308,7 +3190,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/668",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "game-icons:grass",
@@ -3350,7 +3231,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/672",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "material-symbols-light:signpost-outline",
@@ -3368,7 +3248,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/673",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "material-symbols:delete-sweep-outline-rounded",
@@ -3386,7 +3265,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/674",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:leaf",
@@ -3467,7 +3345,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/679",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:map-plus",
@@ -3486,7 +3363,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/680",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:bridge",
@@ -3505,7 +3381,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/681",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "lucide:signpost-big",
@@ -3550,7 +3425,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/683",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:drop",
@@ -3569,7 +3443,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/684",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:water-alert-outline",
@@ -3588,7 +3461,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/685",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:drop-slash",
@@ -3624,7 +3496,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/687",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "la:user-edit",
@@ -3642,7 +3513,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/688",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:ruler-measure",
@@ -3677,7 +3547,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/690",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:water-check-outline",
@@ -3695,7 +3564,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/691",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:warning",
@@ -3739,7 +3607,6 @@ const categories = [
               "iluminação quebrada"
             ], 
         link: "https://ip.somasig.com.br/ocorrencias/piracicaba",
-        // order: 1
           }
         ]
       },
@@ -3797,7 +3664,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/695",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "f7:building-columns-fill",
@@ -3853,7 +3719,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/613",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:ambulance",
@@ -3898,7 +3763,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/620",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:pill",
@@ -3917,7 +3781,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/699",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:stretching",
@@ -3935,7 +3798,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/621",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "streamline-plump:medical-bag",
@@ -3953,7 +3815,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/622",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:vaccine",
@@ -3972,7 +3833,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/623",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "hugeicons:hospital-bed-02",
@@ -3991,7 +3851,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/627",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "fluent:clipboard-pulse-20-regular",
@@ -4053,7 +3912,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/697",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:cog-off-outline",
@@ -4072,7 +3930,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/632",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       }
@@ -4111,7 +3968,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/587",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "mdi:shield-alert-outline",
@@ -4130,7 +3986,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/588",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
@@ -4205,7 +4060,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/594",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:file-text",
@@ -4223,7 +4077,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/596",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:coffee",
@@ -4240,7 +4093,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/597",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:basket",
@@ -4257,7 +4109,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/700",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "ph:piggy-bank-light",
@@ -4337,7 +4188,6 @@ const categories = [
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/569",
             linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:bulb",
@@ -4399,7 +4249,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/570",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           },
           { 
             icon: "tabler:mood-annoyed",
@@ -4418,7 +4267,6 @@ const categories = [
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/572",
         linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-        // order: 1
           }
         ]
       },
