@@ -30,7 +30,7 @@ function updateBreadcrumb(categoryName = null) {
 }
 
 function goBack() {
-  window.location.href = 'index.html';
+  window.location.href = buildInternalUrl('index.html');
 }
 
 // ══════════════════════════════════════════════
@@ -102,7 +102,7 @@ function renderCategory(main) {
 
       makeKeyboardActivatable(subCard);
       subCard.addEventListener('click', () => {
-        window.location.href = `subcategoria.html?id=${sub.id}`;
+        window.location.href = buildInternalUrl(`subcategoria.html?id=${sub.id}`);
       });
 
       grid.appendChild(subCard);
@@ -129,8 +129,9 @@ function renderCategory(main) {
       `;
       makeKeyboardActivatable(svcCard);
       svcCard.addEventListener('click', () => {
-        if (svc.link) {
-          window.open(svc.link, '_blank');
+        const link = getServiceLink(svc);
+        if (link) {
+          window.open(link, '_blank');
         }
       });
       grid.appendChild(svcCard);
@@ -242,6 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     render();
   } else {
     // If no ID, redirect to index
-    window.location.href = 'index.html';
+    window.location.href = buildInternalUrl('index.html');
   }
 });

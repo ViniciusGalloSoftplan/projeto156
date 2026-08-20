@@ -148,10 +148,11 @@ function renderFeaturedCarousel() {
       const categoryId = card.dataset.categoryId;
       const service = featuredServices.find(s => s.name === serviceName);
       
-      if (service && service.link) {
-        window.open(service.link, '_blank');
+      const link = getServiceLink(service);
+      if (link) {
+        window.open(link, '_blank');
       } else if (categoryId) {
-        window.location.href = `categoria.html?id=${categoryId}`;
+        window.location.href = buildInternalUrl(`categoria.html?id=${categoryId}`);
       }
     });
   });
@@ -358,7 +359,7 @@ function renderCategoryMenu(main) {
     `;
     makeKeyboardActivatable(card);
     card.addEventListener('click', () => {
-      window.location.href = `categoria.html?id=${cat.id}`;
+      window.location.href = buildInternalUrl(`categoria.html?id=${cat.id}`);
     });
     grid.appendChild(card);
   });
@@ -495,7 +496,7 @@ function setupSearchInput() {
 
     if (results.length > 0) {
       autocompleteDropdown.innerHTML = results.slice(0, 10).map(result => `
-        <div class="autocomplete-item" data-category-id="${result.categoryId}" data-service-link="${result.link || ''}">
+        <div class="autocomplete-item" data-category-id="${result.categoryId}" data-service-link="${getServiceLink(result) || ''}">
           <div class="autocomplete-item-icon">
             <iconify-icon icon="${result.icon}"></iconify-icon>
           </div>
@@ -516,7 +517,7 @@ function setupSearchInput() {
           if (serviceLink) {
             window.open(serviceLink, '_blank', 'noopener,noreferrer');
           } else {
-            window.location.href = `categoria.html?id=${categoryId}`;
+            window.location.href = buildInternalUrl(`categoria.html?id=${categoryId}`);
           }
         });
       });

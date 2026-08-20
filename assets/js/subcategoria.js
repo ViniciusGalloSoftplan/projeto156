@@ -70,10 +70,10 @@ function updateBreadcrumb() {
   backBtn.onclick = () => {
     if (parentSub) {
       // If nested, go back to parent subcategory
-      window.location.href = `subcategoria.html?id=${parentSub.id}`;
+      window.location.href = buildInternalUrl(`subcategoria.html?id=${parentSub.id}`);
     } else {
       // If direct, go back to category
-      window.location.href = `categoria.html?id=${category.id}`;
+      window.location.href = buildInternalUrl(`categoria.html?id=${category.id}`);
     }
   };
   
@@ -113,9 +113,9 @@ function updateBreadcrumb() {
   if (newBackBtn) {
     newBackBtn.onclick = () => {
       if (parentSub) {
-        window.location.href = `subcategoria.html?id=${parentSub.id}`;
+        window.location.href = buildInternalUrl(`subcategoria.html?id=${parentSub.id}`);
       } else {
-        window.location.href = `categoria.html?id=${category.id}`;
+        window.location.href = buildInternalUrl(`categoria.html?id=${category.id}`);
       }
     };
   }
@@ -123,19 +123,19 @@ function updateBreadcrumb() {
   // Setup breadcrumb navigation
   document.querySelectorAll('.breadcrumb-item[data-level="home"]').forEach(item => {
     item.onclick = () => {
-      window.location.href = 'index.html';
+      window.location.href = buildInternalUrl('index.html');
     };
   });
   
   document.querySelectorAll('.breadcrumb-item[data-level="category"]').forEach(item => {
     item.onclick = () => {
-      window.location.href = `categoria.html?id=${category.id}`;
+      window.location.href = buildInternalUrl(`categoria.html?id=${category.id}`);
     };
   });
   
   document.querySelectorAll('.breadcrumb-item[data-level="parentSub"]').forEach(item => {
     item.onclick = () => {
-      window.location.href = `subcategoria.html?id=${parentSub.id}`;
+      window.location.href = buildInternalUrl(`subcategoria.html?id=${parentSub.id}`);
     };
   });
 }
@@ -156,7 +156,7 @@ function renderSubcategory(main) {
         </div>
       </div>
       <div class="cards-grid">
-        <div class="card" style="cursor:pointer" onclick="window.location.href='index.html'">
+        <div class="card" style="cursor:pointer" onclick="window.location.href=buildInternalUrl('index.html')">
           <div class="card-icon" style="background:var(--tag-bg); color:var(--accent)">
             <iconify-icon icon="ph:house"></iconify-icon>
           </div>
@@ -221,7 +221,7 @@ function renderSubcategory(main) {
       
       makeKeyboardActivatable(subCard);
       subCard.addEventListener('click', () => {
-        window.location.href = `subcategoria.html?id=${nestedSub.id}`;
+        window.location.href = buildInternalUrl(`subcategoria.html?id=${nestedSub.id}`);
       });
       
       grid.appendChild(subCard);
@@ -245,8 +245,9 @@ function renderSubcategory(main) {
       `;
       makeKeyboardActivatable(svcCard);
       svcCard.addEventListener('click', () => {
-        if (svc.link) {
-          window.open(svc.link, '_blank');
+        const link = getServiceLink(svc);
+        if (link) {
+          window.open(link, '_blank');
         }
       });
       grid.appendChild(svcCard);
@@ -362,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           <div class="cards-grid">
-            <div class="card" style="cursor:pointer" onclick="window.location.href='index.html'">
+            <div class="card" style="cursor:pointer" onclick="window.location.href=buildInternalUrl('index.html')">
               <div class="card-icon" style="background:var(--tag-bg); color:var(--accent)">
                 <iconify-icon icon="ph:house"></iconify-icon>
               </div>
@@ -388,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
         <div class="cards-grid">
-          <div class="card" style="cursor:pointer" onclick="window.location.href='index.html'">
+          <div class="card" style="cursor:pointer" onclick="window.location.href=buildInternalUrl('index.html')">
             <div class="card-icon" style="background:var(--tag-bg); color:var(--accent)">
               <iconify-icon icon="ph:house"></iconify-icon>
             </div>
