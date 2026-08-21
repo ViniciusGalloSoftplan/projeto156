@@ -37,7 +37,8 @@ function getFeaturedServices() {
       cat.subcategories.forEach(sub => {
         processSubcategory(sub, cat);
       });
-    } else if (cat.services && cat.services.length > 0) {
+    }
+    if (cat.services && cat.services.length > 0) {
       cat.services.forEach(svc => {
         if (svc.featured) {
           featured.push({
@@ -280,12 +281,13 @@ function getServiceExamples(cat, maxCount = 3) {
         });
       }
     });
-  } else if (cat.services && cat.services.length > 0) {
+  }
+  if (cat.services && cat.services.length > 0) {
     cat.services.forEach(svc => {
       allServices.push(svc.name);
     });
   }
-  
+
   return allServices.slice(0, maxCount);
 }
 
@@ -321,8 +323,9 @@ function renderCategoryMenu(main) {
           serviceCount += sub.services.length;
         }
       });
-    } else if (cat.services && cat.services.length > 0) {
-      serviceCount = cat.services.length;
+    }
+    if (cat.services && cat.services.length > 0) {
+      serviceCount += cat.services.length;
     }
     
     // Get 2-3 service examples
@@ -462,10 +465,11 @@ function setupSearchInput() {
             });
           }
         });
-      } else if (cat.services && cat.services.length > 0) {
+      }
+      if (cat.services && cat.services.length > 0) {
         cat.services.forEach(svc => {
           const matchesKeywords = svc.keywords && svc.keywords.some(kw => kw.toLowerCase().includes(query));
-          if (svc.name.toLowerCase().includes(query) || 
+          if (svc.name.toLowerCase().includes(query) ||
               svc.desc.toLowerCase().includes(query) ||
               svc.tag?.toLowerCase().includes(query) ||
               matchesKeywords) {

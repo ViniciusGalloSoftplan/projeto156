@@ -22,7 +22,7 @@ categories.push({
           "ofensa racial"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/531",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2093&cdOrgao=2",
       },
       { 
         icon: "tabler:rainbow", 
@@ -39,7 +39,7 @@ categories.push({
           "preconceito gay"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/532",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2094&cdOrgao=2",
       },
       { 
         icon: "mdi:hands-pray", 
@@ -56,7 +56,7 @@ categories.push({
           "ofensa religiosa"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/534",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2095&cdOrgao=2",
       },
       { 
         icon: "tabler:dots", 
@@ -73,7 +73,7 @@ categories.push({
           "ofensa"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/535",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2096&cdOrgao=2",
       }
     ]
 });

@@ -27,7 +27,7 @@ categories.push({
           "cnpj"
         ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/396",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=1730&cdOrgao=2",
       },
       {
         icon: "ph:storefront",
@@ -41,8 +41,8 @@ categories.push({
           "feira de rua",
           "evento comercial"
         ],
-        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/494",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/527",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2118&cdOrgao=2",
       }
     ]
 });

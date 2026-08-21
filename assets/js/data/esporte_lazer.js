@@ -15,9 +15,9 @@ categories.push({
         services: [
           { 
             icon: "tabler:ball-football",
-            name: "Campo de Futebol", 
+            name: "Manutenção em Campos de Futebol Municipais", 
             tag: "Esporte", 
-            desc: "Solicitações sobre campos de futebol municipais.", 
+            desc: "Solicitar manutenção em campos de futebol municipais.", 
             keywords: [
               "campo de futebol", 
               "futebol", 
@@ -27,7 +27,7 @@ categories.push({
               "campo municipal"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/579",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2119&cdOrgao=2",
           },
           { 
             icon: "tabler:ball-basketball",
@@ -43,7 +43,7 @@ categories.push({
               "quadra coberta"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/580",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2120&cdOrgao=2",
           },
           { 
             icon: "mdi:skateboard",
@@ -58,7 +58,7 @@ categories.push({
               "esporte radical"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/581",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2121&cdOrgao=2",
           },
         ]
       },
@@ -82,7 +82,7 @@ categories.push({
               "ginástica ao ar livre"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/583",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2123&cdOrgao=2",
           },
           { 
             icon: "tabler:heart-rate-monitor",
@@ -98,7 +98,7 @@ categories.push({
               "caminhada"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/584",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2124&cdOrgao=2",
           }
         ]
       }

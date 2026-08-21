@@ -15,9 +15,9 @@ categories.push({
         services: [
           { 
             icon: "lucide:van",
-            name: "Carro da Prefeitura para Consulta (SITSS)", 
+            name: "Informações e Reclamações Sobre o (SITSS)", 
             tag: "Transporte", 
-            desc: "Solicite carro da prefeitura para levar você a consultas e exames médicos pelo SUS.", 
+            desc: "Informações sobre transporte para consultas e exames médicos pelo SUS.", 
             keywords: [
               "sitss", 
               "transporte", 
@@ -30,13 +30,13 @@ categories.push({
               "ônibus médico"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/613",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2195&cdOrgao=2",
           },
           { 
             icon: "tabler:ambulance",
             name: "Ambulância", 
             tag: "Transporte", 
-            desc: "Solicite ambulância para transporte de paciente.", 
+            desc: "Informações e reclamações sobre ambulâncias.", 
             keywords: [
               "ambulância", 
               "emergência", 
@@ -48,7 +48,7 @@ categories.push({
               "samu"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/615",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2196&cdOrgao=2",
           }
         ]
       },
@@ -60,9 +60,9 @@ categories.push({
         services: [
           { 
             icon: "fa6-solid:user-doctor",
-            name: "Consulta Médica", 
+            name: "Demora no Agendamento de Consulta", 
             tag: "SUS", 
-            desc: "Solicite ou agende consulta pelo SUS.", 
+            desc: "Reclamação sobre demora de agendamento de consulta pelo SUS.", 
             keywords: [
               "consulta", 
               "médico", 
@@ -74,13 +74,13 @@ categories.push({
               "ir ao médico"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/620",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2197&cdOrgao=2",
           },
           { 
             icon: "ph:pill",
-            name: "Remédio de Graça", 
+            name: "Falta de Medicamentos em Farmácias Municipais", 
             tag: "SUS", 
-            desc: "Retire medicamentos nas farmácias da rede municipal.", 
+            desc: "Reclamação sobre a falta de medicamentos em farmácias municipais.", 
             keywords: [
               "farmácia", 
               "remédio", 
@@ -92,13 +92,13 @@ categories.push({
               "remédio sus"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/699",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2198&cdOrgao=2",
           },
           { 
             icon: "tabler:stretching",
-            name: "Fisioterapia", 
+            name: "Reclamação sobre Agendamento de Fisioterapia", 
             tag: "SUS", 
-            desc: "Solicite fisioterapia pelo SUS.", 
+            desc: "Reclamação sobre demora no agendamento ou falta de vaga em Fisioterapia.", 
             keywords: [
               "fisioterapia", 
               "reabilitação", 
@@ -109,13 +109,13 @@ categories.push({
               "fisioterapeuta sus"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/621",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2199&cdOrgao=2",
           },
           { 
             icon: "streamline-plump:medical-bag",
-            name: "Cirurgia pelo SUS", 
+            name: "Demora no Agendamento de Cirurgia pelo SUS", 
             tag: "SUS", 
-            desc: "Solicite informações sobre cirurgia pelo SUS.", 
+            desc: "Reclamação sobre demora no agendamento de cirurgia pelo SUS.", 
             keywords: [
               "cirurgia", 
               "operação", 
@@ -126,7 +126,7 @@ categories.push({
               "marcar cirurgia"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/622",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2200&cdOrgao=2",
           },
           { 
             icon: "tabler:vaccine",
@@ -144,13 +144,13 @@ categories.push({
               "vacina grátis"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/623",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2202&cdOrgao=2",
           },
           { 
             icon: "hugeicons:hospital-bed-02",
-            name: "Internação no Hospital", 
+            name: "Falta de Vaga Hospitalar", 
             tag: "SUS", 
-            desc: "Solicite vaga hospitalar pelo SUS.", 
+            desc: "Reclamação sobre a falta de vaga hospitalar pelo SUS.", 
             keywords: [
               "hospital", 
               "internação", 
@@ -162,13 +162,13 @@ categories.push({
               "precisar internar"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/627",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2201&cdOrgao=2",
           },
           { 
             icon: "fluent:clipboard-pulse-20-regular",
-            name: "Exame Médico", 
+            name: "Demora no Agendamento de Exames", 
             tag: "SUS", 
-            desc: "Demora no agendamento de consulta ou no agendamento de exames", 
+            desc: "Reclamação sobre demora no agendamento de exames pelo SUS.", 
             keywords: [
               "exame", 
               "laboratório", 
@@ -180,7 +180,7 @@ categories.push({
               "exame de sangue"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/629",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2203&cdOrgao=2",
           },
           { 
             icon: "material-symbols:pill-off-outline",
@@ -198,7 +198,7 @@ categories.push({
               "falta medicamento"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/630",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2204&cdOrgao=2",
           }
         ]
       },
@@ -223,7 +223,7 @@ categories.push({
               "unidade básica"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/697",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2205&cdOrgao=2",
           },
           { 
             icon: "mdi:cog-off-outline",
@@ -241,7 +241,33 @@ categories.push({
               "aparelho médico"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/632",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2206&cdOrgao=2",
+          }
+        ]
+      },
+      {
+        id: "atendimento_sus",
+        name: "Atendimento e Funcionários do SUS",
+        icon: "tabler:user-exclamation",
+        desc: "Reclamações sobre atendimento e conduta de funcionários do SUS.",
+        services: [
+          {
+            icon: "tabler:mood-annoyed",
+            name: "Reclamação de Funcionários do SUS",
+            tag: "Atendimento",
+            desc: "Reclamação sobre atendimento inadequado ou conduta de funcionários do SUS.",
+            keywords: [
+              "funcionário",
+              "atendimento",
+              "sus",
+              "mau atendimento",
+              "funcionário sus",
+              "reclamar funcionário",
+              "atendimento ruim sus",
+              "grosseria sus"
+            ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/TBD",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=TBD&cdOrgao=2",
           }
         ]
       }

@@ -27,7 +27,7 @@ categories.push({
               "moto no semáforo"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/608",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2156&cdOrgao=2",
           },
           { 
             icon: "temaki:crossing-markings-zebra-bicolour",
@@ -45,13 +45,13 @@ categories.push({
               "faixa de travessia"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/610",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2157&cdOrgao=2",
           },
           { 
             icon: "tabler:line-dashed",
-            name: "Faixas na Pista", 
+            name: "Implantação ou Manutenção de Faixas de Sinalização", 
             tag: "Sinalização", 
-            desc: "Problemas com faixas de sinalização horizontal.", 
+            desc: "Implantação ou manutenção de faixas de sinalização horizontal.", 
             keywords: [
               "faixa", 
               "pintura", 
@@ -63,11 +63,11 @@ categories.push({
               "faixa desgastada"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/611",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2158&cdOrgao=2",
           },
           { 
             icon: "ic:baseline-abc",
-            name: "Escrita na Pista", 
+            name: "Implantação ou Manutenção de Legendas Pintadas na Via", 
             tag: "Sinalização", 
             desc: "Problemas com legendas pintadas na pista.", 
             keywords: [
@@ -79,7 +79,7 @@ categories.push({
               "texto na rua"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/612",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2159&cdOrgao=2",
           },
           { 
             icon: "tabler:icons",
@@ -95,13 +95,13 @@ categories.push({
               "símbolo na pista"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/617",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2160&cdOrgao=2",
           },
           { 
             icon: "bi:arrows-move",
-            name: "Setas na Pista", 
+            name: "Implantação/Manutenção de Setas de Sinalização", 
             tag: "Sinalização", 
-            desc: "Problemas com setas de sinalização horizontal.", 
+            desc: "Implantação ou manutenção de setas de sinalização horizontal.", 
             keywords: [
               "seta", 
               "direção", 
@@ -111,7 +111,7 @@ categories.push({
               "seta na rua"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/619",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2161&cdOrgao=2",
           }
         ]
       },
@@ -123,9 +123,9 @@ categories.push({
         services: [
           { 
             icon: "tabler:border-outer",
-            name: "Vagas Pintadas", 
+            name: "Implantação/Manutenção de Vagas de Estacionamento na Via", 
             tag: "Sinalização", 
-            desc: "Demandas sobre vagas de estacionamento na pista.", 
+            desc: "Implantação ou manutenção de vagas de estacionamento na via.", 
             keywords: [
               "vaga", 
               "estacionamento", 
@@ -137,7 +137,7 @@ categories.push({
               "vaga pintada"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/643",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2162&cdOrgao=2",
           },
           { 
             icon: "mdi:car-clock",
@@ -154,7 +154,7 @@ categories.push({
               "estacionar com cartão"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/644",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2163&cdOrgao=2",
           }
         ]
       },
@@ -180,7 +180,7 @@ categories.push({
               "placa de pare"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/645",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2164&cdOrgao=2",
           },
           { 
             icon: "material-symbols-light:pin-outline-sharp",
@@ -197,7 +197,7 @@ categories.push({
               "poste torto"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/649",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2165&cdOrgao=2",
           }
         ]
       },
@@ -209,7 +209,7 @@ categories.push({
         services: [
           { 
             icon: "tabler:traffic-lights-off",
-            name: "Semáforo Quebrado", 
+            name: "Implantação/Manutenção de Semáforo", 
             tag: "CET", 
             desc: "Denúncia de semáforo defeituoso ou solicitação de novo semáforo.", 
             keywords: [
@@ -223,11 +223,11 @@ categories.push({
               "sinal não funciona"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/656",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2166&cdOrgao=2",
           },
           { 
             icon: "ph:gauge",
-            name: "Radar de Velocidade", 
+            name: "Implantação/Manutenção de Radares de Velocidade", 
             tag: "CET", 
             desc: "Solicitação ou problemas relacionados a radares de velocidade.", 
             keywords: [
@@ -241,11 +241,11 @@ categories.push({
               "radar fixo"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/662",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2167&cdOrgao=2",
           },
           { 
             icon: "mdi:sine-wave",
-            name: "Lombada ou Quebra-Mola", 
+            name: "Implantação ou Manutenção de Lombada", 
             tag: "CET", 
             desc: "Solicite implantação ou manutenção de lombada.", 
             keywords: [
@@ -262,7 +262,7 @@ categories.push({
               "redutor de velocidade rua"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/663",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2168&cdOrgao=2",
           },
         ]
       },
@@ -287,7 +287,7 @@ categories.push({
               "via para bike"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/665",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2170&cdOrgao=2",
           },
           { 
             icon: "material-symbols:lock",
@@ -304,7 +304,7 @@ categories.push({
               "bicicletário na rua"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/667",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2169&cdOrgao=2",
           }
         ]
       },
@@ -329,7 +329,7 @@ categories.push({
               "projeto viário"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/669",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2171&cdOrgao=2",
           }
         ]
       },
@@ -355,7 +355,7 @@ categories.push({
               "pagar multa"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/671",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2172&cdOrgao=2",
           },
           { 
             icon: "tabler:eye",
@@ -372,7 +372,33 @@ categories.push({
               "blitz trânsito"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/676",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2270&cdOrgao=2",
+          }
+        ]
+      },
+      {
+        id: "transito_veiculos_abandonados",
+        name: "Veículos Abandonados",
+        icon: "mdi:car-off",
+        desc: "Veículos abandonados ou sucateados em vias públicas.",
+        services: [
+          {
+            icon: "hugeicons:car-alert",
+            name: "Carro Abandonado na Rua",
+            tag: "Regras e Normas",
+            desc: "Denúncia de veículo abandonado em via pública.",
+            keywords: [
+              "carro abandonado",
+              "veículo velho",
+              "carro ferro",
+              "sucata",
+              "carro quebrado",
+              "veículo abandonado",
+              "carro velho na rua",
+              "carro sem dono"
+            ],
+            link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/557",
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2148&cdOrgao=2",
           }
         ]
       }

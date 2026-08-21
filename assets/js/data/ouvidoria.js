@@ -15,9 +15,9 @@ categories.push({
         services: [
           { 
             icon: "tabler:heart",
-            name: "Agradecimento", 
+            name: "Registros de Agradecimentos", 
             tag: "Manifestação", 
-            desc: "Registro de agradecimento pela ouvidoria.", 
+            desc: "Registro de agradecimento.", 
             keywords: [
               "agradecimento", 
               "elogio", 
@@ -29,13 +29,13 @@ categories.push({
               "agradecer prefeitura"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/569",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2216&cdOrgao=2",
           },
           { 
             icon: "tabler:bulb",
-            name: "Sugestão", 
+            name: "Registros de Sugestões", 
             tag: "Manifestação", 
-            desc: "Registro de sugestão pela ouvidoria.", 
+            desc: "Registro de sugestão.", 
             keywords: [
               "sugestão", 
               "ideia", 
@@ -47,7 +47,7 @@ categories.push({
               "sugestão para cidade"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/568",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2267&cdOrgao=2",
           }
         ]
       },
@@ -73,7 +73,7 @@ categories.push({
               "reclamar serviço"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/698",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2217&cdOrgao=2",
           },
           { 
             icon: "tabler:user-minus",
@@ -90,7 +90,7 @@ categories.push({
               "pouco atendimento"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/570",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2218&cdOrgao=2",
           },
           { 
             icon: "tabler:mood-annoyed",
@@ -108,7 +108,7 @@ categories.push({
               "funcionário grosso"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/572",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2219&cdOrgao=2",
           }
         ]
       },
@@ -118,25 +118,43 @@ categories.push({
         icon: "tabler:file-search",
         desc: "Acompanhamento de protocolos e processos.",
         services: [
-          { 
+          {
             icon: "tabler:search",
-            name: "Acompanhar Protocolo", 
-            tag: "Protocolo", 
-            desc: "Abertura e acompanhamento de protocolo.", 
+            name: "Acompanhar Protocolo",
+            tag: "Protocolo",
+            desc: "Abertura e acompanhamento de protocolo.",
             keywords: [
-              "protocolo", 
-              "processo", 
-              "acompanhamento", 
-              "número", 
-              "número de protocolo", 
-              "acompanhar processo", 
-              "status protocolo", 
+              "protocolo",
+              "processo",
+              "acompanhamento",
+              "número",
+              "número de protocolo",
+              "acompanhar processo",
+              "status protocolo",
               "consultar protocolo"
-            ], 
+            ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/573",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2220&cdOrgao=2",
           }
         ]
+      }
+    ],
+    services: [
+      {
+        icon: "tabler:gavel",
+        name: "Reivindicação",
+        tag: "Reclamação",
+        desc: "Não encontrou o serviço que procurava? Registre aqui sua reivindicação ou contestação.",
+        keywords: [
+          "reivindicação",
+          "contestação",
+          "pedido",
+          "direito",
+          "reivindicar",
+          "contestar serviço"
+        ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/721",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2295&cdOrgao=2",
       }
     ]
 });

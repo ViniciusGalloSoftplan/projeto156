@@ -28,7 +28,7 @@ categories.push({
               "ajuda financeira"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/514",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2083&cdOrgao=2",
           },
           { 
             icon: "ph:list-checks", 
@@ -45,7 +45,7 @@ categories.push({
               "fazer cadastro"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/515",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2084&cdOrgao=2",
           },
           { 
             icon: "ph:house", 
@@ -62,13 +62,13 @@ categories.push({
               "minha casa minha vida"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/516",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2085&cdOrgao=2",
           },
           { 
             icon: "cil:basket", 
-            name: "Cesta Básica", 
+            name: "Informações sobre Distribuição de Cestas Básicas", 
             tag: "Benefício", 
-            desc: "Solicitação e informações sobre distribuição de cestas básicas.", 
+            desc: "Solicitação de informações sobre distribuição de cestas básicas.", 
             keywords: [
               "cesta básica", 
               "alimentação", 
@@ -79,7 +79,7 @@ categories.push({
               "cesta de alimentos"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/517",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2086&cdOrgao=2",
           }
         ]
       },
@@ -104,7 +104,7 @@ categories.push({
               "criança em risco"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/518",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2087&cdOrgao=2",
           },
           { 
             icon: "mdi:shield-alert-outline", 
@@ -121,7 +121,7 @@ categories.push({
               "criança vendendo"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/519",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2088&cdOrgao=2",
           }
         ]
       },
@@ -146,7 +146,7 @@ categories.push({
               "idoso precisando ajuda"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/520",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2089&cdOrgao=2",
           }
         ]
       },
@@ -171,7 +171,7 @@ categories.push({
               "pessoa sem lar"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/528",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2090&cdOrgao=2",
           }
         ]
       },
@@ -196,7 +196,7 @@ categories.push({
               "cadeirante"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/529",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2091&cdOrgao=2",
           }
         ]
       },
@@ -221,7 +221,7 @@ categories.push({
               "problema mental"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/530",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2092&cdOrgao=2",
           }
         ]
       }

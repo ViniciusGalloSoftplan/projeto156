@@ -39,7 +39,7 @@ categories.push({
               "limpar beco"
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/624",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2187&cdOrgao=2",
           }
         ]
       },
@@ -53,7 +53,7 @@ categories.push({
             icon: "ph:recycle",
             name: "Coleta de Recicláveis", 
             tag: "Coleta", 
-            desc: "Solicitação ou problemas com coleta seletiva de recicláveis.", 
+            desc: "Informações e reclamações de coleta de recicláveis.", 
             keywords: [
               "reciclável",
               "coleta seletiva",
@@ -64,7 +64,7 @@ categories.push({
               "reciclar"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/625",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2188&cdOrgao=2",
           },
           { 
             icon: "tabler:map-pin-plus",
@@ -81,7 +81,7 @@ categories.push({
               "querer coleta"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/626",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2189&cdOrgao=2",
           },
           { 
             icon: "tabler:alert-triangle",
@@ -98,7 +98,7 @@ categories.push({
               "coleta atrasada"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/628",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2190&cdOrgao=2",
           },
           { 
             icon: "mdi:information-outline",
@@ -115,7 +115,7 @@ categories.push({
               "como separar lixo"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/633",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2191&cdOrgao=2",
           },
           { 
             icon: "mdi:sofa-outline", 
@@ -133,7 +133,7 @@ categories.push({
               "coletar móvel velho"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/635",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2192&cdOrgao=2",
           },
           { 
             icon: "tabler:droplet-exclamation",
@@ -150,7 +150,7 @@ categories.push({
               "esgoto na rua"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/636",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2193&cdOrgao=2",
           }
         ]
       },
@@ -176,7 +176,7 @@ categories.push({
               "container de lixo"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/638",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2194&cdOrgao=2",
           }
         ]
       }

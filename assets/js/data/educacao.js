@@ -27,7 +27,7 @@ categories.push({
               "metodologia escola"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/536",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2097&cdOrgao=2",
           },
           { 
             icon: "tabler:file-certificate", 
@@ -43,7 +43,7 @@ categories.push({
               "certificado"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/538",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2098&cdOrgao=2",
           }
         ]
       },
@@ -68,7 +68,7 @@ categories.push({
               "banheiro adaptado"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/539",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2099&cdOrgao=2",
           },
           { 
             icon: "tabler:first-aid-kit",
@@ -85,7 +85,7 @@ categories.push({
               "aluno se machucou"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/542",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2100&cdOrgao=2",
           },
           { 
             icon: "tabler:user-x",
@@ -102,7 +102,7 @@ categories.push({
               "escola fechou"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/540",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2262&cdOrgao=2",
           },
           { 
             icon: "tabler:apple",
@@ -119,7 +119,7 @@ categories.push({
               "lanche da escola"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/544",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2101&cdOrgao=2",
           },
           { 
             icon: "tabler:users-group",
@@ -136,13 +136,13 @@ categories.push({
               "acompanhante especial"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/565",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2102&cdOrgao=2",
           },
           { 
             icon: "ph:student",
-            name: "Vaga Escolar", 
+            name: "Falta de Vaga Escolar", 
             tag: "Matrícula", 
-            desc: "Solicite vaga em escola municipal.", 
+            desc: "Reclamação de falta de vaga em escola municipal.", 
             keywords: [
               "matrícula", 
               "vaga", 
@@ -153,7 +153,7 @@ categories.push({
               "colocar filho na escola"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/566",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2103&cdOrgao=2",
           }
         ]
       },
@@ -178,7 +178,7 @@ categories.push({
               "terminar estudos"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/571",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2104&cdOrgao=2",
           }
         ]
       },
@@ -202,7 +202,7 @@ categories.push({
               "elevador"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/574",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2105&cdOrgao=2",
           },
           { 
             icon: "tabler:clock",
@@ -219,7 +219,7 @@ categories.push({
               "ônibus não chegou"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/575",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2106&cdOrgao=2",
           },
           { 
             icon: "tabler:bus-off",
@@ -236,7 +236,7 @@ categories.push({
               "ônibus não apareceu"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/576",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2107&cdOrgao=2",
           }
         ]
       },
@@ -260,7 +260,7 @@ categories.push({
               "capinar escola"
             ], 
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/577",
-            linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2108&cdOrgao=2",
           },
           { 
             icon: "fluent:paint-brush-12-regular",
@@ -277,7 +277,7 @@ categories.push({
               "conserto parede"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/578",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2109&cdOrgao=2",
           },
           { 
             icon: "tabler:ball-football",
@@ -293,23 +293,7 @@ categories.push({
               "quadra esportiva"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/602",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
-          },
-          { 
-            icon: "tabler:coin-off",
-            name: "Cobrança Indevida", 
-            tag: "Fiscalização", 
-            desc: "Denúncia de cobrança indevida em espaços esportivos.", 
-            keywords: [
-              "cobrança", 
-              "taxa", 
-              "pagamento indevido", 
-              "extorsão", 
-              "cobrar indevido", 
-              "taxa abusiva"
-            ], 
-        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/604",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2110&cdOrgao=2",
           },
           { 
             icon: "mdi:stadium",
@@ -325,7 +309,7 @@ categories.push({
               "ginásio escola"
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/605",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2112&cdOrgao=2",
           }
         ]
       },

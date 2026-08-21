@@ -36,8 +36,9 @@ function renderCategory(main) {
     cat.subcategories.forEach(sub => {
       totalServices += sub.services.length;
     });
-  } else if (cat.services && cat.services.length > 0) {
-    totalServices = cat.services.length;
+  }
+  if (cat.services && cat.services.length > 0) {
+    totalServices += cat.services.length;
   }
 
   main.style.setProperty('--category-bg', cat.colorLight);
@@ -94,8 +95,10 @@ function renderCategory(main) {
 
       grid.appendChild(subCard);
     });
-  } else if (cat.services && cat.services.length > 0) {
-    // Render services directly (no subcategories)
+  }
+
+  if (cat.services && cat.services.length > 0) {
+    // Render standalone services (avulsos) alongside any subcategory cards
     cat.services.forEach(svc => {
       grid.appendChild(createServiceCard(svc));
     });

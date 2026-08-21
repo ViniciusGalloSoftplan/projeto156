@@ -40,7 +40,7 @@ categories.push({
           "água para roça"
         ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/493",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2063&cdOrgao=2",
       },
       { 
         icon: "streamline-plump:food-truck-event-fair",   
@@ -57,7 +57,7 @@ categories.push({
           "feira ao ar livre"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/494",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2064&cdOrgao=2",
       },
       { 
         icon: "ph:storefront",   
@@ -72,7 +72,7 @@ categories.push({
           "mercado popular"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/495",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2065&cdOrgao=2",
       },
       {
         icon: "mdi:bridge",       
@@ -87,7 +87,7 @@ categories.push({
           "ponte de terra"
         ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/496",
-        linkInterno: "", // TODO: preencher "/cpav/abrirCadastroProcessoDinamico.do?cdClasse={cdClasse}&cdOrgao={cdOrgao}" (ver getServiceLink)
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2066&cdOrgao=2",
       }
     ]
 });
