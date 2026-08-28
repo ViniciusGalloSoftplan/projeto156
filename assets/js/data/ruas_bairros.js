@@ -389,9 +389,7 @@ categories.push({
               "mato no terreno",
               "mato no quintal",
               "capinar terreno",
-              "terreno com mato",
-              "mato semae",
-              "capinar área semae"
+              "terreno com mato"
             ],
             link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/670",
             linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2239&cdOrgao=2",
@@ -643,24 +641,6 @@ categories.push({
         linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2250&cdOrgao=3",
           },
           { 
-            icon: "ph:drop-slash",
-            name: "Falta de Água em Casa", 
-            tag: "Semae", 
-            desc: "Comunique falta de água no endereço.", 
-            keywords: [
-              "falta de água", 
-              "sem água", 
-              "corte", 
-              "semae", 
-              "água cortada", 
-              "sem água em casa", 
-              "falta água", 
-              "água parou"
-            ], 
-            link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/686",
-            linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2251&cdOrgao=3",
-          },
-          { 
             icon: "tabler:ruler-measure",
             name: "Padrões de Instalação", 
             tag: "Semae", 
@@ -745,8 +725,6 @@ categories.push({
               "água para praça", 
               "irrigar gramado", 
               "regar praça", 
-              "caminhão pipa semae", 
-              "água semae", 
               "jacob canale", 
               "estrada jacob canale", 
               "lixão"

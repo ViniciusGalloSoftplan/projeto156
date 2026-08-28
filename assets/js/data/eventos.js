@@ -28,21 +28,6 @@ categories.push({
         ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/396",
         linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=1730&cdOrgao=2",
-      },
-      {
-        icon: "ph:storefront",
-        name: "Feira de Rua",
-        tag: "Comércio",
-        desc: "Solicitações sobre feiras e eventos comerciais.",
-        keywords: [
-          "feira",
-          "evento",
-          "comércio",
-          "feira de rua",
-          "evento comercial"
-        ],
-        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/527",
-        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2118&cdOrgao=2",
       }
     ]
 });
