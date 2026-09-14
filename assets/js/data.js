@@ -16,7 +16,9 @@ function detectAppContext() {
       const refUrl = new URL(referrer);
       const refHost = refUrl.hostname.toLowerCase();
       const refPath = refUrl.pathname.toLowerCase();
-      if (refPath.includes("/portal") || refHost.includes("piracicaba.sp.gov.br")) {
+      const isSempapelHost = refHost === "sempapel.piracicaba.sp.gov.br"
+        || refHost.endsWith(".sempapel.piracicaba.sp.gov.br");
+      if (isSempapelHost && refPath.includes("/portal")) {
         return "interno";
       }
     }
@@ -77,6 +79,7 @@ const categoryOrder = [
   "transporte_publico",   // Transporte Público
   "agricultura",         // Agricultura e Zona Rural
   "financas",             // Finanças Públicas
+  "desenvolvimento_economico", // Empresas e Inovação
   "limpeza_publica",      // Limpeza Pública
   "eventos",              // Eventos
   "atendimento_social",   // Atendimento Social

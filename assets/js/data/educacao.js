@@ -313,5 +313,25 @@ categories.push({
           }
         ]
       },
+    ],
+    services: [
+      {
+        icon: "tabler:info-circle",
+        name: "Solicitação de Informações - Educação",
+        tag: "Informações",
+        desc: "Não encontrou o serviço que procurava? Solicite informações gerais sobre educação.",
+        keywords: [
+          "informação",
+          "informações",
+          "dúvida",
+          "educação",
+          "secretaria de educação",
+          "informação sobre escola",
+          "orientação educação",
+          "perguntar educação"
+        ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/725",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2299&cdOrgao=2",
+      }
     ]
 });

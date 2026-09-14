@@ -91,9 +91,9 @@ categories.push({
       },
       {
         id: "transporte_terminais_rodoviaria",
-        name: "Terminais e Rodoviária",
+        name: "Terminais, Rodoviária e Aeroporto",
         icon: "map:bus-station",
-        desc: "Terminais de ônibus e rodoviária municipal.",
+        desc: "Terminais de ônibus, rodoviária e aeroporto municipal.",
         services: [
           { 
             icon: "tabler:building-community",
@@ -128,6 +128,25 @@ categories.push({
             ], 
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/601",
         linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2178&cdOrgao=2",
+          },
+          {
+            icon: "tabler:plane",
+            name: "Aeroporto Municipal Pedro Morganti",
+            tag: "Transporte",
+            desc: "Solicitações e reclamações sobre o Aeroporto Municipal Pedro Morganti.",
+            keywords: [
+              "aeroporto",
+              "pedro morganti",
+              "avião",
+              "aeródromo",
+              "aeroporto municipal",
+              "pista de pouso",
+              "hangar",
+              "voo",
+              "aviação"
+            ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/723",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2298&cdOrgao=2",
           }
         ]
       },

@@ -266,8 +266,8 @@ categories.push({
               "atendimento ruim sus",
               "grosseria sus"
             ],
-        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/TBD",
-        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=TBD&cdOrgao=2",
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/720",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2294&cdOrgao=2",
           }
         ]
       }
