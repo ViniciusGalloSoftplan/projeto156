@@ -123,7 +123,7 @@ categories.push({
           },
           { 
             icon: "ph:plant",
-            name: "Plantar ou Receber Muda de Árvore", 
+            name: "Solicitação de Mudas Para Área Particular", 
             tag: "Árvore", 
             desc: "Solicite o plantio de uma árvore pela prefeitura ou peça uma muda para plantar você mesmo.", 
             keywords: [
@@ -142,6 +142,54 @@ categories.push({
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/653",
         linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2227&cdOrgao=2",
+          },
+          {
+            icon: "game-icons:sprout",
+            name: "Solicitação de Plantio de Mudas em Área Pública",
+            tag: "Árvore",
+            desc: "Canal para munícipes, coletivos e associações solicitarem à Prefeitura de Piracicaba a avaliação técnica e o plantio de mudas de árvores em praças, parques, canteiros centrais, áreas verdes e Áreas de Preservação Permanente (APP).",
+            keywords: [
+              "plantio",
+              "plantio em área pública",
+              "plantar árvore em praça",
+              "plantar árvore no parque",
+              "muda",
+              "mudas",
+              "arborização",
+              "canteiro central",
+              "área verde",
+              "app",
+              "área de preservação permanente",
+              "coletivo",
+              "associação",
+              "mutirão de plantio",
+              "reflorestamento"
+            ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/TODO",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=TODO&cdOrgao=2",
+          },
+          {
+            icon: "ph:tree",
+            name: "Solicitação de Plantio de Mudas em Calçada",
+            tag: "Árvore",
+            desc: "Canal para munícipes solicitarem à Prefeitura de Piracicaba a avaliação técnica, abertura de berço e plantio gratuito de mudas de árvores nativas ou adequadas para a arborização na calçada de seus imóveis.",
+            keywords: [
+              "plantio em calçada",
+              "plantar árvore na calçada",
+              "árvore na calçada",
+              "muda",
+              "mudas",
+              "muda grátis",
+              "abertura de berço",
+              "berço na calçada",
+              "arborização urbana",
+              "árvore nativa",
+              "árvore em frente de casa",
+              "plantio gratuito",
+              "sombra na calçada"
+            ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/TODO",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=TODO&cdOrgao=2",
           }
         ]
       },

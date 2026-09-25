@@ -135,6 +135,30 @@ categories.push({
             ],
         link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/573",
         linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2220&cdOrgao=2",
+          },
+          {
+            icon: "tabler:file-x",
+            name: "Solicitação de Cancelamento de Processos do 156",
+            tag: "Protocolo",
+            desc: "Canal destinado ao munícipe para solicitar a desistência, encerramento ou cancelamento de um ou mais processos/protocolos previamente abertos no Sistema 156 da Prefeitura de Piracicaba.",
+            keywords: [
+              "cancelamento",
+              "cancelar processo",
+              "cancelar protocolo",
+              "cancelar solicitação",
+              "desistência",
+              "desistir do processo",
+              "encerrar processo",
+              "encerramento",
+              "baixar processo",
+              "anular protocolo",
+              "156",
+              "abri por engano",
+              "pedido duplicado",
+              "não preciso mais"
+            ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/722",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2297&cdOrgao=2",
           }
         ]
       }

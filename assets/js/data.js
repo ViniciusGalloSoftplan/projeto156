@@ -83,6 +83,7 @@ const categoryOrder = [
   "limpeza_publica",      // Limpeza Pública
   "eventos",              // Eventos
   "atendimento_social",   // Atendimento Social
+  "participacao_popular", // Participação Popular
   "fiscalizacao",         // Fiscalização
   "discriminacao",        // Discriminação
   "ouvidoria",            // Sugestões e Reclamações
