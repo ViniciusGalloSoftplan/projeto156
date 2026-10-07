@@ -19,7 +19,7 @@ Use o servidor MCP do Oracle configurado para rodar a query abaixo, trocando `<T
 SELECT
     c.NMCLASSE,
     'https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/' || s.CDSERVICO AS "Link Externo",
-    '/cpav/abrirCadastroProcessoDinamico.do?cdClasse=' || cc.CDCLASSE || '&cdOrgao=' || cc.CDORGAO AS "Link Interno"
+    '/cpav/abrirCadastroProcessoDinamico.do?cdClasse=' || cc.CDCLASSE || CHR(38) || 'cdOrgao=' || cc.CDORGAO AS "Link Interno"
 FROM SOLAR.ECPASERVICO s
 LEFT JOIN SOLAR.ECPAFORMULARIO f
     ON f.CDFORMULARIO = s.CDFORMULARIO
@@ -34,6 +34,8 @@ LEFT JOIN SOLAR.ECPAAREAINTERESSE a
 WHERE UPPER(c.NMCLASSE) LIKE UPPER('%<TERMO>%')
 ORDER BY a.CDAREAINTERESSE
 ```
+
+O `&` do link interno fica como `CHR(38)` de propósito: o SQLcl trata `&` literal como variável de substituição e cancela a query ("Substituição cancelada").
 
 - **0 linhas:** tente um termo mais curto (uma ou duas palavras do assunto, evitando acentos que podem variar). Se ainda assim não achar, **pare** e peça o nome exato da classe. Nunca invente link nem use `TODO`.
 - **Mais de 1 linha:** mostre as opções e pergunte qual é a correta.
