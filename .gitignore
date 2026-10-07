@@ -15,3 +15,6 @@ npm-debug.log*
 
 # Dependencies
 node_modules/
+
+# Deploy FTP (credenciais locais)
+deploy/ftp.config
