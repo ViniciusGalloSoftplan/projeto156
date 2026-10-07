@@ -102,6 +102,36 @@ categories.push({
         ]
       },
       {
+        id: "procuradoria_juridico",
+        name: "Procuradoria e Assuntos Jurídicos",
+        icon: "tabler:gavel",
+        desc: "Decisões, intimações e demandas judiciais dirigidas ao Município.",
+        services: [
+          {
+            icon: "ph:gavel",
+            name: "Protocolar Decisão Judicial",
+            tag: "Jurídico",
+            desc: "Envio de decisões, liminares, mandados e intimações judiciais à Procuradoria Geral do Município.",
+            keywords: [
+              "decisão judicial",
+              "liminar",
+              "mandado",
+              "intimação",
+              "intimacao",
+              "procuradoria",
+              "pgm",
+              "advogado",
+              "oficial de justiça",
+              "ordem judicial",
+              "processo judicial",
+              "notificação judicial"
+            ],
+        link: "https://sempapel.piracicaba.sp.gov.br/atendimento/servico-info/759",
+        linkInterno: "/cpav/abrirCadastroProcessoDinamico.do?cdClasse=2333&cdOrgao=2",
+          }
+        ]
+      },
+      {
         id: "servidores_rh",
         name: "Servidores Municipais",
         icon: "clarity:id-badge-solid",
